@@ -1,0 +1,106 @@
+import { FileCheck, Search, Wallet, TrendingUp } from "lucide-react";
+
+export const HowItWorksSection = () => {
+  const stepsUMKM = [
+    {
+      icon: FileCheck,
+      title: "Daftar & Verifikasi",
+      description: "Daftarkan usaha Anda dan lengkapi dokumen untuk proses verifikasi.",
+    },
+    {
+      icon: TrendingUp,
+      title: "AI Credit Scoring",
+      description: "Sistem AI kami akan menilai kelayakan kredit bisnis Anda secara objektif.",
+    },
+    {
+      icon: Wallet,
+      title: "Dapatkan Pendanaan",
+      description: "Terima investasi dari investor yang percaya pada potensi bisnis Anda.",
+    },
+  ];
+
+  const stepsInvestor = [
+    {
+      icon: Search,
+      title: "Cari UMKM",
+      description: "Jelajahi berbagai UMKM yang telah diverifikasi dengan credit score.",
+    },
+    {
+      icon: FileCheck,
+      title: "Analisis & Pilih",
+      description: "Gunakan data dan analytics untuk memilih UMKM yang tepat.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Investasi & Pantau",
+      description: "Mulai investasi dan pantau pertumbuhan portofolio Anda.",
+    },
+  ];
+
+  return (
+    <section className="py-20 px-4 bg-background">
+      <div className="container mx-auto">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl font-bold mb-4">Bagaimana Cara Kerjanya?</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Proses yang sederhana dan transparan untuk UMKM dan Investor
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* UMKM Flow */}
+          <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
+            <h3 className="text-2xl font-bold mb-8 text-primary">Untuk UMKM</h3>
+            <div className="space-y-6">
+              {stepsUMKM.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div key={index} className="flex gap-4 group">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+                        {index + 1}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon className="w-5 h-5 text-primary" />
+                        <h4 className="text-lg font-semibold">{step.title}</h4>
+                      </div>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Investor Flow */}
+          <div className="animate-fade-in" style={{ animationDelay: "400ms" }}>
+            <h3 className="text-2xl font-bold mb-8 text-primary">Untuk Investor</h3>
+            <div className="space-y-6">
+              {stepsInvestor.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div key={index} className="flex gap-4 group">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+                        {index + 1}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon className="w-5 h-5 text-primary" />
+                        <h4 className="text-lg font-semibold">{step.title}</h4>
+                      </div>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
