@@ -53,7 +53,7 @@ export const Navbar = () => {
               size="default"
               className="font-semibold"
             >
-              <Link to="/login-investor"><span className="text-foreground: to-black">Investor</span></Link>
+              <Link to="/login-investor"><span className={isScrolled ? "text-foreground" : ""}>Investor</span></Link>
             </Button>
           </div>
         </div>

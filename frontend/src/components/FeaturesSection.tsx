@@ -1,6 +1,6 @@
 import { features } from "@/data/features";
-import umkmImage1 from "@/assets/umkm-1.jpg"; // Background image
-import umkmImage2 from "@/assets/umkm-2.jpg"; // Image for the left box
+import umkmImage1 from "@/assets/umkm-1.jpg";
+import umkmImage2 from "@/assets/umkm-2.jpg";
 
 export const FeaturesSection = () => {
   return (
@@ -17,7 +17,7 @@ export const FeaturesSection = () => {
       {/* Konten Utama */}
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Kolom Kiri: Box dengan gambar umkm-2.jpg */}
           <div className="w-full h-full bg-background/50 backdrop-blur-md rounded-2xl p-4 shadow-2xl animate-fade-in">
             <img
