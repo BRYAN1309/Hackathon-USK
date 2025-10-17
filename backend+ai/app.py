@@ -20,16 +20,12 @@ app.config["JWT_SECRET_KEY"] = config.jwt_secret_key
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=config.jwt_access_token_expires)
 jwt = JWTManager(app)
 
-# User UMKM APIRoutes
+# Routes
 app.route("/user_umkm/register", methods=["POST"])(user_umkm_controller.register)
 app.route("/user_umkm/login", methods=["POST"])(user_umkm_controller.login)
-
-# UMKM APIRoutes
 app.route("/umkm/register", methods=["POST"])(umkm_controller.register_umkm)
 app.route("/umkm", methods=["GET"])(umkm_controller.get_umkm_user)
 app.route("/umkm/<int:user_id>", methods=["GET"])(umkm_controller.get_umkm_by_user_id)
-
-# Investor APIRoutes
 app.route("/investor/register", methods=["POST"])(investor_controller.register_investor)
 app.route("/investor/login", methods=["POST"])(investor_controller.login_investor)
 
@@ -37,6 +33,10 @@ app.route("/investor/login", methods=["POST"])(investor_controller.login_investo
 def health_check():
     return {"status": "success", "message": "API is running"}
 
+@app.route("/health")
+def health():
+    return {"status": "healthy"}
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 8080))  
     app.run(host="0.0.0.0", port=port, debug=False)
