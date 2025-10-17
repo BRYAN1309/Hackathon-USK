@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import logo from "@/assets/Logo.svg";
+import logo from "@/assets/logo.svg";
 import { loginUser } from "@/api/auth"; 
 
 const LoginUMKM = () => {

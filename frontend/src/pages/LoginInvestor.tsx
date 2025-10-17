@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import logo from "@/assets/Logo.svg";
+import logo from "@/assets/logo.svg";
 
 const LoginInvestor = () => {
   const navigate = useNavigate();
