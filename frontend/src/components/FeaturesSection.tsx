@@ -1,37 +1,66 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { features } from "@/data/features";
+import umkmImage1 from "@/assets/umkm-1.jpg"; // Background image
+import umkmImage2 from "@/assets/umkm-2.jpg"; // Image for the left box
 
 export const FeaturesSection = () => {
   return (
-    <section className="py-20 px-4 bg-background">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold mb-4">Kenapa Memilih Teman Usaha?</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Kami bukan hanya platform investasi. Kami adalah mitra pertumbuhan
-            yang menggabungkan teknologi AI canggih dengan dampak sosial nyata.
-          </p>
-        </div>
+    <section className="relative py-20 px-4 min-h-screen flex items-center">
+      {/* Latar Belakang Penuh dengan umkm-1.jpg */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={umkmImage1}
+          alt="Produk-produk UMKM Indonesia"
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <Card
-                key={index}
-                className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-primary" />
+      {/* Konten Utama */}
+      <div className="container mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Kolom Kiri: Box dengan gambar umkm-2.jpg */}
+          <div className="w-full h-full bg-background/50 backdrop-blur-md rounded-2xl p-4 shadow-2xl animate-fade-in">
+            <img
+              src={umkmImage2}
+              alt="Kegiatan UMKM"
+              className="rounded-xl w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Kolom Kanan: Satu Card Besar untuk Semua Fitur */}
+          <div 
+            className="font-sans w-full bg-background/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl animate-fade-in" 
+            style={{ animationDelay: "200ms" }}
+          >
+            <div className="text-left mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 font-display">
+                Kenapa <span className="text-primary">Memilih Teman</span> Usaha?
+              </h2>
+              <p className="text-muted-foreground md:text-lg">
+                Kami adalah mitra pertumbuhan yang menggabungkan teknologi AI canggih dengan dampak sosial nyata.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {features.map((feature) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={feature.title} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold font-display">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
