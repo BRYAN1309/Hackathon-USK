@@ -1,68 +1,53 @@
-import { features } from "@/data/features";
-import umkmImage1 from "@/assets/umkm-1.jpg"; // Background image
-import umkmImage2 from "@/assets/umkm-2.jpg"; // Image for the left box
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import heroImage from "@/assets/hero-image.jpg";
 
-export const FeaturesSection = () => {
+export const HeroSection = () => {
   return (
-    <section className="relative py-20 px-4 min-h-screen flex items-center">
-      {/* Latar Belakang Penuh dengan umkm-1.jpg */}
+    <section className="relative min-h-screen flex items-end pb-24">
+      {/* Background Image with a lighter, more opaque overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={umkmImage1}
-          alt="Produk-produk UMKM Indonesia"
+        <img 
+          src={heroImage} 
+          alt="UMKM Success" 
           className="w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-white/80" />
       </div>
 
-      {/* Konten Utama */}
-      <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-2xl animate-fade-in">
+          {/* Reduced font size and changed text color to foreground/black */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">
+            BISNIS YANG <span className="text-primary">ANDA</span> IMPIKAN,
+            <br />
+            PERTUMBUHAN YANG <span className="text-primary">MEREKA</span> PERCAYAI
+          </h1>
           
-          {/* Kolom Kiri: Box dengan gambar umkm-2.jpg */}
-          <div className="w-full h-full bg-background/50 backdrop-blur-md rounded-2xl p-4 shadow-2xl animate-fade-in">
-            <img
-              src={umkmImage2}
-              alt="Kegiatan UMKM"
-              className="rounded-xl w-full h-full object-cover"
-            />
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
+            Platform AI Micro-Investment yang mempertemukan UMKM F&B wilayah 3T dengan investor untuk pertumbuhan dan kesuksesan tanpa batas.
+          </p>
+
+          {/* CTA Buttons - Text updated to match the screenshot */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button 
+              asChild 
+              variant="hero" 
+              size="lg"
+              className="w-full sm:w-auto"
+            >
+              <Link to="/register-umkm">Gabung sebagai UMKM</Link>
+            </Button>
+            <Button 
+              asChild 
+              variant="outline" 
+              size="lg"
+              className="w-full sm:w-auto"
+            >
+              <Link to="/register-investor">Gabung sebagai Investor</Link>
+            </Button>
           </div>
-
-          {/* Kolom Kanan: Satu Card Besar untuk Semua Fitur */}
-          <div 
-            className="font-sans w-full bg-background/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl animate-fade-in" 
-            style={{ animationDelay: "200ms" }}
-          >
-            <div className="text-left mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-3 font-display">
-                Kenapa Memilih Teman Usaha?
-              </h2>
-              <p className="text-muted-foreground md:text-lg">
-                Kami adalah mitra pertumbuhan yang menggabungkan teknologi AI canggih dengan dampak sosial nyata.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {features.map((feature) => {
-                const Icon = feature.icon;
-                return (
-                  <div key={feature.title} className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      {/* Menggunakan Montserrat untuk judul fitur */}
-                      <h3 className="font-semibold font-display">{feature.title}</h3>
-                      {/* Menggunakan Nunito Sans untuk deskripsi fitur */}
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
