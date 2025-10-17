@@ -3,12 +3,13 @@ import { features } from "@/data/features";
 
 export const FeaturesSection = () => {
   return (
-    <section className="py-20 px-4 bg-secondary">
+    <section className="py-20 px-4 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold mb-4">Fitur Unggulan</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Platform lengkap dengan teknologi AI untuk menghubungkan UMKM dengan investor secara aman dan efisien
+          <h2 className="text-4xl font-bold mb-4">Kenapa Memilih Teman Usaha?</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Kami bukan hanya platform investasi. Kami adalah mitra pertumbuhan
+            yang menggabungkan teknologi AI canggih dengan dampak sosial nyata.
           </p>
         </div>
 
@@ -16,8 +17,8 @@ export const FeaturesSection = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
