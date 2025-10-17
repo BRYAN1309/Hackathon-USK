@@ -6,33 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { MapPin, TrendingUp, Calendar, Users } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { umkmDetail, financialData } from "@/data/umkm";
 
 const UMKMDetail = () => {
   const { id } = useParams();
-
-  // Mock data
-  const umkmDetail = {
-    name: "Warung Sederhana",
-    creditScore: 750,
-    location: "Papua",
-    category: "Makanan",
-    age: "3 tahun",
-    employees: "5 orang",
-    description:
-      "Warung makan tradisional yang menyajikan berbagai menu nusantara. Telah beroperasi selama 3 tahun dengan pelanggan setia dari berbagai kalangan. Fokus pada kualitas makanan dan pelayanan yang ramah.",
-    modalDibutuhkan: "Rp 20.000.000",
-    owner: "Ibu Siti",
-    contact: "+62 812-3456-7890",
-  };
-
-  const financialData = [
-    { month: "Jan", revenue: 4000000, expense: 2500000 },
-    { month: "Feb", revenue: 3800000, expense: 2400000 },
-    { month: "Mar", revenue: 5200000, expense: 3000000 },
-    { month: "Apr", revenue: 4800000, expense: 2800000 },
-    { month: "Mei", revenue: 6000000, expense: 3500000 },
-    { month: "Jun", revenue: 5500000, expense: 3200000 },
-  ];
 
   return (
     <div className="flex min-h-screen bg-secondary">

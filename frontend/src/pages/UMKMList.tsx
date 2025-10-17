@@ -7,45 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, TrendingUp } from "lucide-react";
+import { umkmData } from "@/data/umkm";
 
 const UMKMList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("desc");
-
-  const umkmData = [
-    {
-      id: 1,
-      name: "Warung Sederhana",
-      creditScore: 750,
-      description: "Warung makan tradisional dengan menu nusantara",
-      modalDibutuhkan: "Rp 20.000.000",
-      location: "Papua",
-    },
-    {
-      id: 2,
-      name: "Cafe Nusantara",
-      creditScore: 720,
-      description: "Cafe dengan konsep modern dan menu lokal",
-      modalDibutuhkan: "Rp 35.000.000",
-      location: "Maluku",
-    },
-    {
-      id: 3,
-      name: "Resto Tradisional",
-      creditScore: 680,
-      description: "Restoran dengan masakan khas daerah",
-      modalDibutuhkan: "Rp 50.000.000",
-      location: "NTT",
-    },
-    {
-      id: 4,
-      name: "Kedai Kopi Asli",
-      creditScore: 690,
-      description: "Kedai kopi dengan biji kopi lokal berkualitas",
-      modalDibutuhkan: "Rp 15.000.000",
-      location: "Papua Barat",
-    },
-  ];
 
   const filteredUMKM = umkmData
     .filter((umkm) =>

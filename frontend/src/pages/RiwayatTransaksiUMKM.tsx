@@ -5,19 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, TrendingUp, TrendingDown } from "lucide-react";
+import { transactions } from "@/data/umkm";
 
 const RiwayatTransaksiUMKM = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("date");
-
-  const transactions = [
-    { id: 1, date: "2024-06-15", description: "Penjualan Harian", amount: 250000, type: "income" },
-    { id: 2, date: "2024-06-14", description: "Pembelian Bahan Baku", amount: -150000, type: "expense" },
-    { id: 3, date: "2024-06-13", description: "Penjualan Harian", amount: 280000, type: "income" },
-    { id: 4, date: "2024-06-12", description: "Gaji Karyawan", amount: -500000, type: "expense" },
-    { id: 5, date: "2024-06-11", description: "Penjualan Harian", amount: 320000, type: "income" },
-    { id: 6, date: "2024-06-10", description: "Listrik & Air", amount: -200000, type: "expense" },
-  ];
 
   return (
     <div className="flex min-h-screen bg-secondary">

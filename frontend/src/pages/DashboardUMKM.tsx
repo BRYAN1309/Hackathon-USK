@@ -4,27 +4,9 @@ import { StatCard } from "@/components/StatCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, DollarSign, User } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { transactionData, creditScoreData } from "@/data/umkm";
 
 const DashboardUMKM = () => {
-  // Mock data
-  const transactionData = [
-    { month: "Jan", amount: 4000 },
-    { month: "Feb", amount: 3000 },
-    { month: "Mar", amount: 5000 },
-    { month: "Apr", amount: 4500 },
-    { month: "Mei", amount: 6000 },
-    { month: "Jun", amount: 5500 },
-  ];
-
-  const creditScoreData = [
-    { month: "Jan", score: 650 },
-    { month: "Feb", score: 670 },
-    { month: "Mar", score: 690 },
-    { month: "Apr", score: 710 },
-    { month: "Mei", score: 730 },
-    { month: "Jun", score: 750 },
-  ];
-
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="umkm" />

@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { StepIndicator } from "@/components/StepIndicator";
 import { useToast } from "@/hooks/use-toast";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/Logo.svg";
 
 const RegisterUMKM = () => {
   const navigate = useNavigate();
@@ -255,6 +255,14 @@ const RegisterUMKM = () => {
               <>
                 <div className="space-y-2">
                   <Label htmlFor="nmid">Nomor Rekening QRIS (NMID)</Label>
+                  <Input
+                    id="nmid"
+                    value={formData.nmid}
+                    onChange={(e) => setFormData({ ...formData, nmid: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="nmid">Nomor Rekening</Label>
                   <Input
                     id="nmid"
                     value={formData.nmid}

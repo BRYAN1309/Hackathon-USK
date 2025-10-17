@@ -1,42 +1,6 @@
-import { FileCheck, Search, Wallet, TrendingUp } from "lucide-react";
+import { stepsUMKM, stepsInvestor } from "@/data/howItWorks";
 
 export const HowItWorksSection = () => {
-  const stepsUMKM = [
-    {
-      icon: FileCheck,
-      title: "Daftar & Verifikasi",
-      description: "Daftarkan usaha Anda dan lengkapi dokumen untuk proses verifikasi.",
-    },
-    {
-      icon: TrendingUp,
-      title: "AI Credit Scoring",
-      description: "Sistem AI kami akan menilai kelayakan kredit bisnis Anda secara objektif.",
-    },
-    {
-      icon: Wallet,
-      title: "Dapatkan Pendanaan",
-      description: "Terima investasi dari investor yang percaya pada potensi bisnis Anda.",
-    },
-  ];
-
-  const stepsInvestor = [
-    {
-      icon: Search,
-      title: "Cari UMKM",
-      description: "Jelajahi berbagai UMKM yang telah diverifikasi dengan credit score.",
-    },
-    {
-      icon: FileCheck,
-      title: "Analisis & Pilih",
-      description: "Gunakan data dan analytics untuk memilih UMKM yang tepat.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Investasi & Pantau",
-      description: "Mulai investasi dan pantau pertumbuhan portofolio Anda.",
-    },
-  ];
-
   return (
     <section className="py-20 px-4 bg-background">
       <div className="container mx-auto">
