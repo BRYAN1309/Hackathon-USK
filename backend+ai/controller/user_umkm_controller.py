@@ -60,7 +60,8 @@ def login():
     if not check_password_hash(user_data["password"], password):
         return error_response("Password salah")
 
-    access_token = create_access_token(identity=email)
+    # Gunakan ID user yang sebenarnya
+    access_token = create_access_token(identity=user_data["id"])
 
     return success_response(
         "Login berhasil",
