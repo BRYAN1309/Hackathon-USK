@@ -3,7 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import logo from "@/assets/Logo.svg";
 
 const LoginUMKM = () => {
@@ -13,21 +19,31 @@ const LoginUMKM = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-        navigate("/dashboard-umkm");
+    navigate("/dashboard-umkm");
   };
 
   return (
     <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg">
-        <CardHeader className="space-y-4 text-center">
-          <div className="flex justify-center">
-            <img src={logo} alt="TemanUsaha" className="w-20 h-20" />
+      <Card className="w-full max-w-md shadow-lg rounded-2xl">
+        <CardHeader className="text-center space-y-4">
+          {/* Logo */}
+          <div className="relative w-full">
+            <img
+              src={logo}
+              alt="TemanUsaha"
+              className="block mx-auto w-48 h-auto md:w-56 drop-shadow-md transition-transform duration-300 hover:scale-105"
+              style={{ position: "relative", left: "30px" }}
+            />
           </div>
-          <CardTitle className="text-2xl font-bold">Login UMKM</CardTitle>
+
+          {/* Judul */}
+          <CardTitle className="text-2xl font-bold mt-2">Login UMKM</CardTitle>
           <CardDescription>Masuk ke akun UMKM Anda</CardDescription>
         </CardHeader>
+
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Email */}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -39,6 +55,8 @@ const LoginUMKM = () => {
                 required
               />
             </div>
+
+            {/* Password */}
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input
@@ -50,12 +68,23 @@ const LoginUMKM = () => {
                 required
               />
             </div>
-            <Button type="submit" className="w-full" size="lg">
+
+            {/* Tombol Masuk */}
+            <Button
+              type="submit"
+              className="w-full bg-red-600 hover:bg-red-700"
+              size="lg"
+            >
               Masuk
             </Button>
+
+            {/* Link Daftar */}
             <p className="text-center text-sm text-muted-foreground">
               Belum punya akun?{" "}
-              <Link to="/register-umkm" className="text-primary font-medium hover:underline">
+              <Link
+                to="/register-umkm"
+                className="text-primary font-medium hover:underline"
+              >
                 Daftar sekarang
               </Link>
             </p>
