@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import React from "react";
 
 interface StepIndicatorProps {
   currentStep: number;
@@ -9,14 +10,14 @@ interface StepIndicatorProps {
 export const StepIndicator = ({ currentStep, totalSteps, steps }: StepIndicatorProps) => {
   return (
     <div className="w-full mb-8">
-      <div className="flex items-center justify-between max-w-2xl mx-auto">
+      <div className="flex items-center justify-center max-w-2xl mx-auto">
         {steps.map((step, index) => {
           const stepNumber = index + 1;
           const isActive = stepNumber === currentStep;
           const isCompleted = stepNumber < currentStep;
-          
+
           return (
-            <div key={stepNumber} className="flex items-center flex-1">
+            <React.Fragment key={stepNumber}>
               <div className="flex flex-col items-center">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
@@ -30,7 +31,7 @@ export const StepIndicator = ({ currentStep, totalSteps, steps }: StepIndicatorP
                   {isCompleted ? <Check className="w-5 h-5" /> : stepNumber}
                 </div>
                 <span
-                  className={`mt-2 text-xs font-medium ${
+                  className={`mt-2 text-xs font-medium text-center w-20 ${
                     isActive || isCompleted ? "text-foreground" : "text-muted-foreground"
                   }`}
                 >
@@ -39,12 +40,12 @@ export const StepIndicator = ({ currentStep, totalSteps, steps }: StepIndicatorP
               </div>
               {stepNumber < totalSteps && (
                 <div
-                  className={`h-0.5 flex-1 mx-2 transition-all ${
+                  className={`h-0.5 flex-1 transition-all ${
                     isCompleted ? "bg-primary" : "bg-muted"
                   }`}
                 />
               )}
-            </div>
+            </React.Fragment>
           );
         })}
       </div>
