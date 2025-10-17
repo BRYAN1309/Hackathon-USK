@@ -19,7 +19,7 @@ app.config["JWT_SECRET_KEY"] = config.jwt_secret_key
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=config.jwt_access_token_expires)
 jwt = JWTManager(app)
 
-# Routes
+# User UMKM APIRoutes
 app.route("/user_umkm/register", methods=["POST"])(user_umkm_controller.register)
 app.route("/user_umkm/login", methods=["POST"])(user_umkm_controller.login)
 
