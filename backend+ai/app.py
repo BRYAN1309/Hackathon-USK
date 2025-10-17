@@ -13,8 +13,13 @@ load_dotenv()
 config = generate_config()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
-
+CORS(
+    app,
+    resources={r"/*": {"origins": ["http://localhost:5173", "http://localhost:8080", "https://yourfrontend.vercel.app"]}},
+    supports_credentials=True,
+    allow_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+)
 # JWT setup
 app.config["JWT_SECRET_KEY"] = config.jwt_secret_key
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=config.jwt_access_token_expires)
