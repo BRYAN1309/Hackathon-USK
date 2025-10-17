@@ -6,7 +6,7 @@ from config.config import generate_config
 from flask_cors import CORS
 
 # Controllers
-from controller import user_umkm_controller
+from controller import user_umkm_controller, umkm_controller
 
 load_dotenv()
 config = generate_config()
@@ -19,9 +19,13 @@ app.config["JWT_SECRET_KEY"] = config.jwt_secret_key
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=config.jwt_access_token_expires)
 jwt = JWTManager(app)
 
-# Routes
+# User UMKM APIRoutes
 app.route("/user_umkm/register", methods=["POST"])(user_umkm_controller.register)
 app.route("/user_umkm/login", methods=["POST"])(user_umkm_controller.login)
+
+#UMKM APIRoutes
+app.route("/umkm/register", methods=["POST"])(umkm_controller.create_umkm)
+app.route("/umkm", methods=["GET"])(umkm_controller.get_umkm_user)
 
 if __name__ == "__main__":
     app.run(debug=True)

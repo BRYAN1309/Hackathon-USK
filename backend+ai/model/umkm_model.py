@@ -1,0 +1,45 @@
+from supabase import create_client, Client
+from config.config import generate_config
+import tempfile, os
+
+config = generate_config()
+supabase: Client = create_client(config.supabase_url, config.supabase_key)
+
+class UmkmModel:
+    table_name = "umkm"
+
+    @staticmethod
+    def upload_foto(file_storage, filename):
+        """Upload foto bisnis ke Supabase Storage bucket 'UMKM'"""
+        bucket_name = "UMKM"
+
+        try:
+            # Simpan file sementara
+            tmp_dir = tempfile.gettempdir()
+            tmp_path = os.path.join(tmp_dir, filename)
+            file_storage.save(tmp_path)
+
+            # Upload ke Supabase Storage
+            with open(tmp_path, "rb") as f:
+                res = supabase.storage().from_(bucket_name).upload(filename, f)
+
+            os.remove(tmp_path)
+
+            # Dapatkan URL publik
+            public_url = supabase.storage().from_(bucket_name).get_public_url(filename)
+            return public_url
+        except Exception as e:
+            print(f"❌ Error saat upload foto bisnis: {e}")
+            return None
+
+    @staticmethod
+    def create_umkm(data):
+        return supabase.table(UmkmModel.table_name).insert(data).execute()
+
+    @staticmethod
+    def get_umkm_by_user(user_id):
+        return supabase.table(UmkmModel.table_name).select("*").eq("user_umkm_id", user_id).execute()
+
+    @staticmethod
+    def get_all_umkm():
+        return supabase.table(UmkmModel.table_name).select("*").execute()
