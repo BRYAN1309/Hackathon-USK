@@ -50,7 +50,14 @@ const RegisterInvestor = () => {
     <div className="min-h-screen bg-secondary py-12 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-8">
-          <img src={logo} alt="TemanUsaha" className="w-20 h-20 mx-auto mb-4" />
+          <div className="relative w-full">
+            <img
+              src={logo}
+              alt="TemanUsaha"
+              className="block mx-auto w-64 h-auto md:w-72 drop-shadow-md transition-transform duration-300 hover:scale-105"
+              style={{ position: "relative", left: "30px" }}
+            />
+          </div>
           <h1 className="text-3xl font-bold">Daftar sebagai Investor</h1>
         </div>
 

@@ -27,11 +27,11 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
   const links = type === "umkm" ? umkmLinks : investorLinks;
 
   return (
-    <aside className="w-64 bg-background border-r border-border min-h-screen flex flex-col">
-      <div className="p-6 border-b border-border">
+    <aside className="w-64 bg-[#DC3848] border-r border-white/20 min-h-screen flex flex-col">
+      <div className="p-6 border-b border-white/20">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="TemanUsaha" className="w-12 h-12" />
-          <span className="font-bold text-lg">TemanUsaha</span>
+          <img src={logo} alt="TemanUsaha" className="w-10 h-10" />
+          <span className="font-bold text-lg text-white">TemanUsaha</span>
         </Link>
       </div>
 
@@ -46,21 +46,21 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
               to={link.path}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                 isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-foreground hover:bg-secondary"
+                  ? "bg-white"
+                  : "text-white hover:bg-white/10"
               }`}
             >
-              <Icon className="w-5 h-5" />
-              <span className="font-medium">{link.label}</span>
+              <Icon className={`w-5 h-5 ${isActive ? 'text-[#DC3848]' : 'text-white'}`} />
+              <span className={`font-medium ${isActive ? 'text-black' : 'text-white'}`}>{link.label}</span>
             </Link>
           );
         })}
       </nav>
 
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-white/20">
         <Button
           variant="ghost"
-          className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10"
+          className="w-full justify-start text-white hover:text-white hover:bg-white/20"
           onClick={() => window.location.href = "/"}
         >
           <LogOut className="w-5 h-5 mr-3" />
