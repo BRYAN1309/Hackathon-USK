@@ -4,23 +4,9 @@ import { StatCard } from "@/components/StatCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, DollarSign, Wallet } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { investmentData, topUMKM } from "@/data/umkm";
 
 const DashboardInvestor = () => {
-  const investmentData = [
-    { month: "Jan", amount: 50000000 },
-    { month: "Feb", amount: 55000000 },
-    { month: "Mar", amount: 60000000 },
-    { month: "Apr", amount: 58000000 },
-    { month: "Mei", amount: 65000000 },
-    { month: "Jun", amount: 70000000 },
-  ];
-
-  const topUMKM = [
-    { name: "Warung Sederhana", creditScore: 750, profit: "+15%" },
-    { name: "Cafe Nusantara", creditScore: 720, profit: "+12%" },
-    { name: "Resto Tradisional", creditScore: 680, profit: "+8%" },
-  ];
-
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="investor" />

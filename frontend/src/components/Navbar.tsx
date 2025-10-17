@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/Logo.svg";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,9 +27,8 @@ export const Navbar = () => {
             <img 
               src={logo} 
               alt="TemanUsaha Logo" 
-              className="w-10 h-10 transition-transform group-hover:scale-110" 
+              className="w-100 h-100 transition-transform group-hover:scale-110" 
             />
-            <span className="text-xl font-bold text-foreground">TemanUsaha</span>
           </Link>
 
           {/* CTA Buttons */}

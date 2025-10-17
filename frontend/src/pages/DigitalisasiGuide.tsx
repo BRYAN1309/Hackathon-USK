@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, QrCode, FileText, Smartphone } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.svg";
 
 const DigitalisasiGuide = () => {
   const steps = [

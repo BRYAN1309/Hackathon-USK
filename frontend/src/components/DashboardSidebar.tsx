@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Home, BarChart3, Clock, LogOut, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.svg";
 
 interface DashboardSidebarProps {
   type: "umkm" | "investor";
