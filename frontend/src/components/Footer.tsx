@@ -10,7 +10,7 @@ export const Footer = () => {
           {/* Brand Column */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="TemanUsaha" className="w-10 h-10" />
+              <img src={logo} alt="TemanUsaha" className="w-12 h-12" />
               <span className="text-xl font-bold">TemanUsaha</span>
             </Link>
             <p className="text-muted-foreground">
@@ -30,33 +30,6 @@ export const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/login-umkm" className="text-muted-foreground hover:text-primary transition-colors">
-                  Login UMKM
-                </Link>
-              </li>
-              <li>
-                <Link to="/login-investor" className="text-muted-foreground hover:text-primary transition-colors">
-                  Login Investor
-                </Link>
-              </li>
-              <li>
-                <Link to="/register-umkm" className="text-muted-foreground hover:text-primary transition-colors">
-                  Daftar UMKM
-                </Link>
-              </li>
-              <li>
-                <Link to="/register-investor" className="text-muted-foreground hover:text-primary transition-colors">
-                  Daftar Investor
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Resources */}

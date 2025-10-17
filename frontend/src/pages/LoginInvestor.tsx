@@ -13,7 +13,6 @@ const LoginInvestor = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement authentication logic
     navigate("/dashboard-investor");
   };
 
@@ -22,7 +21,7 @@ const LoginInvestor = () => {
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-4 text-center">
           <div className="flex justify-center">
-            <img src={logo} alt="TemanUsaha" className="w-16 h-16" />
+            <img src={logo} alt="TemanUsaha" className="w-20 h-20" />
           </div>
           <CardTitle className="text-2xl font-bold">Login Investor</CardTitle>
           <CardDescription>Masuk ke akun Investor Anda</CardDescription>

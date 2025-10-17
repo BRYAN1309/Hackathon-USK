@@ -32,7 +32,7 @@ const DigitalisasiGuide = () => {
     <div className="min-h-screen bg-secondary py-12 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-8">
-          <img src={logo} alt="TemanUsaha" className="w-16 h-16 mx-auto mb-4" />
+          <img src={logo} alt="TemanUsaha" className="w-20 h-20 mx-auto mb-4" />
           <h1 className="text-3xl font-bold mb-2">Panduan Digitalisasi UMKM</h1>
           <p className="text-muted-foreground">
             Ikuti langkah-langkah berikut untuk mendapatkan QRIS dan bergabung dengan TemanUsaha

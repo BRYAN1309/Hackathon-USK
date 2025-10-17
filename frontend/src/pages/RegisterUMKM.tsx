@@ -38,7 +38,8 @@ const RegisterUMKM = () => {
     jumlahKaryawan: "",
     // Step 3
     nmid: "",
-    nib: null as File | null,
+    nr: "",
+    nib: "",
   });
 
   const handleNext = () => {
@@ -161,11 +162,11 @@ const RegisterUMKM = () => {
                         <SelectValue placeholder="Pilih kategori" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="makanan">Makanan</SelectItem>
-                        <SelectItem value="minuman">Minuman</SelectItem>
-                        <SelectItem value="cafe">Cafe</SelectItem>
-                        <SelectItem value="restoran">Restoran</SelectItem>
-                        <SelectItem value="warung">Warung</SelectItem>
+                        <SelectItem value="kuliner">Kuliner</SelectItem>
+                        <SelectItem value="fashion">Fashion</SelectItem>
+                        <SelectItem value="agribisnis">Agribisnis</SelectItem>
+                        <SelectItem value="jasa">Jasa</SelectItem>
+                        <SelectItem value="industri">Industri</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -198,7 +199,6 @@ const RegisterUMKM = () => {
                     onChange={(e) => setFormData({ ...formData, alamat: e.target.value })}
                   />
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="provinsi">Provinsi</Label>
                     <Input
@@ -206,33 +206,6 @@ const RegisterUMKM = () => {
                       value={formData.provinsi}
                       onChange={(e) => setFormData({ ...formData, provinsi: e.target.value })}
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="kabupaten">Kabupaten</Label>
-                    <Input
-                      id="kabupaten"
-                      value={formData.kabupaten}
-                      onChange={(e) => setFormData({ ...formData, kabupaten: e.target.value })}
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="kecamatan">Kecamatan</Label>
-                    <Input
-                      id="kecamatan"
-                      value={formData.kecamatan}
-                      onChange={(e) => setFormData({ ...formData, kecamatan: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="desa">Desa</Label>
-                    <Input
-                      id="desa"
-                      value={formData.desa}
-                      onChange={(e) => setFormData({ ...formData, desa: e.target.value })}
-                    />
-                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label>Apakah bisnis Anda sudah terdigitalisasi?</Label>
@@ -262,20 +235,19 @@ const RegisterUMKM = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="nmid">Nomor Rekening</Label>
+                  <Label htmlFor="nr">Nomor Rekening</Label>
                   <Input
-                    id="nmid"
-                    value={formData.nmid}
-                    onChange={(e) => setFormData({ ...formData, nmid: e.target.value })}
+                    id="nr"
+                    value={formData.nr}
+                    onChange={(e) => setFormData({ ...formData, nr: e.target.value })}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="nib">Surat Izin Usaha (NIB)</Label>
+                  <Label htmlFor="nib">Nomor Izin Berusaha (NIB)</Label>
                   <Input
                     id="nib"
-                    type="file"
-                    accept=".pdf,.jpg,.png"
-                    onChange={(e) => setFormData({ ...formData, nib: e.target.files?.[0] || null })}
+                    value={formData.nib}
+                    onChange={(e) => setFormData({ ...formData, nib: e.target.value })}
                   />
                 </div>
               </>
