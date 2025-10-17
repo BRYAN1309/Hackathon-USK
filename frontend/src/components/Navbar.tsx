@@ -24,25 +24,31 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo and Brand */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img 
-              src={logo} 
-              alt="TemanUsaha Logo" 
-              className="w-100 h-100 transition-transform group-hover:scale-110" 
+            <img
+              src={logo}
+              alt="TemanUsaha Logo"
+              className="h-10 w-auto transition-transform group-hover:scale-110"
             />
+            <span
+              className={`text-xl font-bold transition-colors ${
+                isScrolled ? "text-foreground" : "text-white"
+              }`}
+            >
+            </span>
           </Link>
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
-            <Button 
-              asChild 
-              variant="hero" 
+            <Button
+              asChild
+              variant="hero"
               size="default"
               className="font-semibold"
             >
               <Link to="/login-umkm">UMKM</Link>
             </Button>
-            <Button 
-              asChild 
+            <Button
+              asChild
               variant={isScrolled ? "outline" : "hero-outline"}
               size="default"
               className="font-semibold"
