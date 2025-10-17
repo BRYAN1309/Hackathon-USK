@@ -10,11 +10,13 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
-      <FeaturesSection />
-      <HowItWorksSection />
-      <StatsSection />
-      <CTASection />
+      <main>
+        <HeroSection />
+        <StatsSection />
+        <FeaturesSection />
+        <HowItWorksSection />
+        <CTASection />
+      </main>
       <Footer />
     </div>
   );
