@@ -7,6 +7,7 @@ supabase: Client = create_client(config.supabase_url, config.supabase_key)
 
 class UmkmModel:
     table_name = "umkm"
+    user_table = "user_umkm"
 
     @staticmethod
     def upload_foto(file_storage, filename=None):
@@ -50,3 +51,34 @@ class UmkmModel:
     @staticmethod
     def get_all_umkm():
         return supabase.table(UmkmModel.table_name).select("*").execute()
+    @staticmethod
+    def get_by_user_id(user_id: int):
+        """
+        Ambil data gabungan antara user_umkm dan umkm berdasarkan user_id
+        """
+        # Ambil data user
+        user_result = supabase.table(UmkmModel.user_table).select("*").eq("id", user_id).execute()
+        if not user_result.data:
+            return None
+
+        user_data = user_result.data[0]
+
+        # Ambil data UMKM berdasarkan user_id
+        umkm_result = supabase.table(UmkmModel.table_name).select("*").eq("user_umkm_id", user_id).execute()
+        if not umkm_result.data:
+            return None
+
+        umkm_data = umkm_result.data[0]
+
+        # Gabungkan field yang dibutuhkan
+        combined_data = {
+            "user_umkm_id": user_data["id"],
+            "user_type": user_data.get("user_type", "UMKM"),
+            "kategori_bisnis": umkm_data.get("kategori_bisnis"),
+            "lokasi": umkm_data.get("lokasi"),
+            "created_at": umkm_data.get("created_at"),
+            "jumlah_karyawan": umkm_data.get("jumlah_karyawan"),
+            "usia_bisnis": umkm_data.get("usia_bisnis")
+        }
+
+        return combined_data
