@@ -16,7 +16,7 @@ const RegisterUMKM = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isDigitalized, setIsDigitalized] = useState<string>("");
 
-  const steps = ["Identitas", "Profil Bisnis", "Detail Digital", "Selesai"];
+  const steps = ["Identitas", "Profil Bisnis", "Selesai"];
 
   const [formData, setFormData] = useState({
     // Step 1
@@ -36,7 +36,7 @@ const RegisterUMKM = () => {
     kecamatan: "",
     desa: "",
     jumlahKaryawan: "",
-    // Step 3
+    // Step 3 fields are now part of Step 2
     nmid: "",
     nr: "",
     nib: "",
@@ -47,7 +47,7 @@ const RegisterUMKM = () => {
       navigate("/digitalisasi-guide");
       return;
     }
-    if (currentStep < 4) {
+    if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
     } else {
       toast({
@@ -70,7 +70,7 @@ const RegisterUMKM = () => {
           <h1 className="text-3xl font-bold">Daftar sebagai UMKM</h1>
         </div>
 
-        <StepIndicator currentStep={currentStep} totalSteps={4} steps={steps} />
+        <StepIndicator currentStep={currentStep} totalSteps={3} steps={steps} />
 
         <Card className="shadow-lg">
           <CardHeader>
@@ -140,7 +140,7 @@ const RegisterUMKM = () => {
               </>
             )}
 
-            {/* Step 2: Profil Bisnis */}
+            {/* Step 2: Profil Bisnis & Detail Digital */}
             {currentStep === 2 && (
               <>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -220,41 +220,41 @@ const RegisterUMKM = () => {
                     </div>
                   </RadioGroup>
                 </div>
+
+                {/* Conditionally render digital detail form */}
+                {isDigitalized === 'yes' && (
+                  <div className="space-y-4 pt-4 mt-4 border-t">
+                     <div className="space-y-2">
+                      <Label htmlFor="nmid">Nomor Rekening QRIS (NMID)</Label>
+                      <Input
+                        id="nmid"
+                        value={formData.nmid}
+                        onChange={(e) => setFormData({ ...formData, nmid: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="nr">Nomor Rekening</Label>
+                      <Input
+                        id="nr"
+                        value={formData.nr}
+                        onChange={(e) => setFormData({ ...formData, nr: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="nib">Nomor Izin Berusaha (NIB)</Label>
+                      <Input
+                        id="nib"
+                        value={formData.nib}
+                        onChange={(e) => setFormData({ ...formData, nib: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                )}
               </>
             )}
 
-            {/* Step 3: Detail Bisnis Digital */}
+            {/* Step 3: Selesai */}
             {currentStep === 3 && (
-              <>
-                <div className="space-y-2">
-                  <Label htmlFor="nmid">Nomor Rekening QRIS (NMID)</Label>
-                  <Input
-                    id="nmid"
-                    value={formData.nmid}
-                    onChange={(e) => setFormData({ ...formData, nmid: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="nr">Nomor Rekening</Label>
-                  <Input
-                    id="nr"
-                    value={formData.nr}
-                    onChange={(e) => setFormData({ ...formData, nr: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="nib">Nomor Izin Berusaha (NIB)</Label>
-                  <Input
-                    id="nib"
-                    value={formData.nib}
-                    onChange={(e) => setFormData({ ...formData, nib: e.target.value })}
-                  />
-                </div>
-              </>
-            )}
-
-            {/* Step 4: Selesai */}
-            {currentStep === 4 && (
               <div className="text-center py-8">
                 <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
@@ -280,7 +280,7 @@ const RegisterUMKM = () => {
 
             {/* Navigation Buttons */}
             <div className="flex justify-between pt-6">
-              {currentStep > 1 && currentStep < 4 && (
+              {currentStep > 1 && currentStep < 3 && (
                 <Button variant="outline" onClick={handleBack}>
                   Kembali
                 </Button>
@@ -289,7 +289,7 @@ const RegisterUMKM = () => {
                 onClick={handleNext}
                 className={currentStep === 1 ? "w-full" : "ml-auto"}
               >
-                {currentStep === 4 ? "Masuk ke Dashboard" : "Lanjut"}
+                {currentStep === 3 ? "Masuk ke Dashboard" : "Lanjut"}
               </Button>
             </div>
           </CardContent>
