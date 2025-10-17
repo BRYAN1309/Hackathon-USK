@@ -6,7 +6,7 @@ from config.config import generate_config
 from flask_cors import CORS
 
 # Controllers
-from controller import user_umkm_controller, umkm_controller
+from controller import user_umkm_controller, umkm_controller, investor_controller
 
 load_dotenv()
 config = generate_config()
@@ -26,6 +26,10 @@ app.route("/user_umkm/login", methods=["POST"])(user_umkm_controller.login)
 #UMKM APIRoutes
 app.route("/umkm/register", methods=["POST"])(umkm_controller.register_umkm)
 app.route("/umkm", methods=["GET"])(umkm_controller.get_umkm_user)
+
+#Investor APIRoutes
+app.route("/investor/register", methods=["POST"])(investor_controller.register_investor)
+app.route("/investor/login", methods=["POST"])(investor_controller.login_investor)
 
 if __name__ == "__main__":
     app.run(debug=True)
