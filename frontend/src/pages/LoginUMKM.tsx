@@ -10,40 +10,48 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import logo from "@/assets/Logo.svg";
+import logo from "@/assets/logo.svg";
+import { loginUser } from "@/api/auth"; 
 
 const LoginUMKM = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/dashboard-umkm");
+    setLoading(true);
+    setErrorMsg(null);
+
+    try {
+      const res = await loginUser(email, password);
+      // Simpan token ke localStorage
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      alert("Login berhasil!");
+      navigate("/dashboard-umkm");
+    } catch (error: any) {
+      setErrorMsg(error.response?.data?.message || "Login gagal, periksa email & password Anda.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg rounded-2xl">
-        <CardHeader className="text-center space-y-4">
-          {/* Logo */}
-          <div className="relative w-full">
-            <img
-              src={logo}
-              alt="TemanUsaha"
-              className="block mx-auto w-48 h-auto md:w-56 drop-shadow-md transition-transform duration-300 hover:scale-105"
-              style={{ position: "relative", left: "30px" }}
-            />
+      <Card className="w-full max-w-md shadow-lg">
+        <CardHeader className="space-y-4 text-center">
+          <div className="flex justify-center">
+            <img src={logo} alt="TemanUsaha" className="w-20 h-20" />
           </div>
-
-          {/* Judul */}
-          <CardTitle className="text-2xl font-bold mt-2">Login UMKM</CardTitle>
+          <CardTitle className="text-2xl font-bold">Login UMKM</CardTitle>
           <CardDescription>Masuk ke akun UMKM Anda</CardDescription>
         </CardHeader>
-
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Email */}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -56,7 +64,6 @@ const LoginUMKM = () => {
               />
             </div>
 
-            {/* Password */}
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input
@@ -69,16 +76,14 @@ const LoginUMKM = () => {
               />
             </div>
 
-            {/* Tombol Masuk */}
-            <Button
-              type="submit"
-              className="w-full bg-red-600 hover:bg-red-700"
-              size="lg"
-            >
-              Masuk
+            {errorMsg && (
+              <p className="text-red-500 text-sm text-center">{errorMsg}</p>
+            )}
+
+            <Button type="submit" className="w-full" size="lg" disabled={loading}>
+              {loading ? "Memproses..." : "Masuk"}
             </Button>
 
-            {/* Link Daftar */}
             <p className="text-center text-sm text-muted-foreground">
               Belum punya akun?{" "}
               <Link

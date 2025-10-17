@@ -51,3 +51,16 @@ def get_umkm_user():
     user_id = get_jwt_identity()
     result = UmkmModel.get_umkm_by_user(user_id)
     return success_response("Data UMKM user", result.data)
+
+def get_umkm_by_user_id(user_id):
+    """
+    Mengambil data UMKM berdasarkan user_id (gabungan user dan bisnis)
+    """
+    try:
+        result = UmkmModel.get_by_user_id(user_id)
+        if not result:
+            return error_response("Data tidak ditemukan untuk user_id tersebut")
+
+        return success_response("Data UMKM berhasil diambil", result)
+    except Exception as e:
+        return error_response(f"Terjadi kesalahan: {str(e)}")
