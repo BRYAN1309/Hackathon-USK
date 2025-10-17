@@ -1,69 +1,68 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { TrendingUp, Shield, Heart } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import { features } from "@/data/features";
+import umkmImage1 from "@/assets/umkm-1.jpg"; // Background image
+import umkmImage2 from "@/assets/umkm-2.jpg"; // Image for the left box
 
-export const HeroSection = () => {
+export const FeaturesSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center">
-      {/* Background Image with Overlay */}
+    <section className="relative py-20 px-4 min-h-screen flex items-center">
+      {/* Latar Belakang Penuh dengan umkm-1.jpg */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="UMKM Success" 
+        <img
+          src={umkmImage1}
+          alt="Produk-produk UMKM Indonesia"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl animate-fade-in">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">UMKM Berkembang,</span>
-            <br />
-            <span className="text-primary">Masa Depan Kuat</span>
-          </h1>
+      {/* Konten Utama */}
+      <div className="container mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-            Platform AI Micro-Investment yang mempertemukan UMKM F&B wilayah 3T dengan investor.
-          </p>
+          {/* Kolom Kiri: Box dengan gambar umkm-2.jpg */}
+          <div className="w-full h-full bg-background/50 backdrop-blur-md rounded-2xl p-4 shadow-2xl animate-fade-in">
+            <img
+              src={umkmImage2}
+              alt="Kegiatan UMKM"
+              className="rounded-xl w-full h-full object-cover"
+            />
+          </div>
 
-          {/* Feature Pills */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <div className="flex items-center gap-3 bg-background/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border">
-              <TrendingUp className="w-5 h-5 text-primary" />
-              <span className="font-medium">AI Credit Scoring & Fraud Detection</span>
+          {/* Kolom Kanan: Satu Card Besar untuk Semua Fitur */}
+          <div 
+            className="font-sans w-full bg-background/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl animate-fade-in" 
+            style={{ animationDelay: "200ms" }}
+          >
+            <div className="text-left mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 font-display">
+                Kenapa Memilih Teman Usaha?
+              </h2>
+              <p className="text-muted-foreground md:text-lg">
+                Kami adalah mitra pertumbuhan yang menggabungkan teknologi AI canggih dengan dampak sosial nyata.
+              </p>
             </div>
-            <div className="flex items-center gap-3 bg-background/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border">
-              <Shield className="w-5 h-5 text-primary" />
-              <span className="font-medium">Investasi Aman & Transparan</span>
-            </div>
-            <div className="flex items-center gap-3 bg-background/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border">
-              <Heart className="w-5 h-5 text-primary" />
-              <span className="font-medium">Dampak Sosial Nyata bagi UMKM 3T</span>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {features.map((feature) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={feature.title} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      {/* Menggunakan Montserrat untuk judul fitur */}
+                      <h3 className="font-semibold font-display">{feature.title}</h3>
+                      {/* Menggunakan Nunito Sans untuk deskripsi fitur */}
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button 
-              asChild 
-              variant="hero" 
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              <Link to="/register-umkm">Gabung sebagai UMKM</Link>
-            </Button>
-            <Button 
-              asChild 
-              variant="outline" 
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              <Link to="/register-investor">Gabung sebagai Investor</Link>
-            </Button>
-          </div>
         </div>
       </div>
     </section>
