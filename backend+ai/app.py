@@ -37,23 +37,43 @@ MODEL_PATH = os.path.join(os.path.dirname(__file__), "model")
 def load_any_model(filename):
     path = os.path.join(MODEL_PATH, filename)
     try:
-        # Try to load using joblib (for sklearn, clustering, etc.)
-        return joblib.load(path)
-    except Exception:
-        # If fails, assume it's an XGBoost native model
+        obj = joblib.load(path)
+
+        # Jika file adalah dict yang menyimpan model dan metadata
+        if isinstance(obj, dict):
+            if "model" in obj:
+                print(f"[INFO] Loaded {filename} (dict with model key)")
+                return obj["model"]
+            else:
+                print(f"[WARN] Loaded {filename} is a dict without 'model' key")
+                return obj
+
+        print(f"[INFO] Loaded {filename} (model type: {type(obj).__name__})")
+        return obj
+
+    except Exception as e:
+        print(f"[INFO] Fallback to XGBoost Booster for {filename}")
         booster = xgb.Booster()
         booster.load_model(path)
         return booster
 
-# Load all models safely
+
+# =========================================================
+# 🔹 Load Models
+# =========================================================
 fraud_model = load_any_model("fraud_detection_model.pkl")
-credit_model = load_any_model("credit_scoring_model.pkl")
-cluster_model = load_any_model("clustering_model.pkl")
+credit_model = load_any_model("credit_model.pkl")
+cluster_model = load_any_model("cluster_model.pkl")
+
+# Print types for debugging
+print("Fraud model type:", type(fraud_model))
+print("Credit model type:", type(credit_model))
+print("Cluster model type:", type(cluster_model))
+
 
 # =========================================================
 # 🔹 Prediction Routes
 # =========================================================
-
 @app.route("/predict_fraud", methods=["POST"])
 def predict_fraud():
     """Predict potential fraud based on given features."""
@@ -101,6 +121,7 @@ def predict_cluster():
     except Exception as e:
         return jsonify({"error": f"Prediction error: {str(e)}"}), 500
 
+
 # =========================================================
 # 🔹 User & Investor Routes
 # =========================================================
@@ -132,6 +153,7 @@ def register_investor():
 def login_investor():
     return investor_controller.login_investor()
 
+
 # =========================================================
 # 🔹 Health Check Routes
 # =========================================================
@@ -142,6 +164,7 @@ def health_check():
 @app.route("/health")
 def health():
     return {"status": "healthy"}
+
 
 # =========================================================
 # 🔹 Run Server
