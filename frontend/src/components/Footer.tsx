@@ -12,8 +12,14 @@ export const Footer = () => {
           {/* Brand Column (Left Side) */}
           <div className="space-y-4 lg:w-1/3">
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="TemanUsaha" className="w-12 h-12" />
-              <span className="text-xl font-bold">TemanUsaha</span>
+              <div className="relative w-full">
+                <img
+                  src={logo}
+                  alt="TemanUsaha"
+                  className="block mx-auto w-48 h-auto md:w-56 drop-shadow-md transition-transform duration-300 hover:scale-105"
+                  style={{ position: "relative", left: "0px" }}
+                />
+              </div>
             </Link>
             <p className="text-muted-foreground">
               Platform AI Micro-Investment yang mempertemukan UMKM F&B wilayah 3T dengan investor.
