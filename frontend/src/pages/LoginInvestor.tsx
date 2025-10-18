@@ -3,16 +3,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import logo from "@/assets/logo.svg";
+import { useToast } from "@/hooks/use-toast";
 
 const LoginInvestor = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    toast({
+      title: "Login Berhasil!",
+      description: "Anda akan diarahkan ke dashboard investor.",
+    });
     navigate("/dashboard-investor");
   };
 
@@ -60,7 +72,10 @@ const LoginInvestor = () => {
             </Button>
             <p className="text-center text-sm text-muted-foreground">
               Belum punya akun?{" "}
-              <Link to="/register-investor" className="text-primary font-medium hover:underline">
+              <Link
+                to="/register-investor"
+                className="text-primary font-medium hover:underline"
+              >
                 Daftar sekarang
               </Link>
             </p>

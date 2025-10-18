@@ -22,7 +22,7 @@ export const Footer = () => {
               </div>
             </Link>
             <p className="text-muted-foreground">
-              Platform AI Micro-Investment yang mempertemukan UMKM F&B wilayah 3T dengan investor.
+              AI Micro-Investment Platform yang mempertemukan UMKM dengan investor.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors">
