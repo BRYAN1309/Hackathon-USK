@@ -5,20 +5,33 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input"; // Import Input
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { useNavigate, useParams } from "react-router-dom";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const FundingProposal = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [ownershipType, setOwnershipType] = useState("equity");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isProposalDialogOpen, setIsProposalDialogOpen] = useState(false); // State for proposal form dialog
+  const [fundingAmount, setFundingAmount] = useState("");
+  const [equityOffer, setEquityOffer] = useState("");
 
-  const handleSubmit = () => {
-    setShowSuccess(true);
+  const handleOpenProposalDialog = () => {
+    setIsProposalDialogOpen(true);
   };
+
+  const handleProposalSubmit = () => {
+    // Logic to handle the submission
+    console.log("Funding Amount:", fundingAmount);
+    console.log("Equity Offer:", equityOffer);
+
+    setIsProposalDialogOpen(false); // Close the proposal dialog
+    setShowSuccess(true); // Show the success dialog
+  };
+
 
   const handleCloseSuccess = () => {
     setShowSuccess(false);
@@ -208,13 +221,52 @@ const FundingProposal = () => {
               <Button variant="outline" onClick={() => navigate("/cari-investor")}>
                 Batalkan
               </Button>
-              <Button onClick={handleSubmit} size="lg">
+              <Button onClick={handleOpenProposalDialog} size="lg">
                 Ajukan Dana
               </Button>
             </div>
           </div>
         </main>
       </div>
+
+      {/* Funding Proposal Dialog */}
+      <Dialog open={isProposalDialogOpen} onOpenChange={setIsProposalDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Form Pengajuan Dana</DialogTitle>
+            <DialogDescription>
+              Lengkapi detail pengajuan dana Anda di bawah ini.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="funding-amount">Dana yang ingin diajukan (Rp)</Label>
+              <Input
+                id="funding-amount"
+                type="number"
+                placeholder="Contoh: 50000000"
+                value={fundingAmount}
+                onChange={(e) => setFundingAmount(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="equity-offer">Tawaran kepemilikan saham (%)</Label>
+              <Input
+                id="equity-offer"
+                type="number"
+                placeholder="Contoh: 15"
+                value={equityOffer}
+                onChange={(e) => setEquityOffer(e.target.value)}
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsProposalDialogOpen(false)}>Batal</Button>
+            <Button onClick={handleProposalSubmit}>Ajukan !</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
 
       {/* Success Dialog */}
       <Dialog open={showSuccess} onOpenChange={setShowSuccess}>

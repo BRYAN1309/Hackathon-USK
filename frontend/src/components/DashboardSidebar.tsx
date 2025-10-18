@@ -1,5 +1,6 @@
+// src/components/DashboardSidebar.tsx
 import { Link, useLocation } from "react-router-dom";
-import { Home, BarChart3, Clock, LogOut, Building2, Search, FileText } from "lucide-react";
+import { Home, BarChart3, Clock, LogOut, Building2, Search, FileText, User, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.svg";
 
@@ -13,6 +14,8 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
 
   const umkmLinks = [
     { icon: Home, label: "Halaman Utama", path: basePath },
+    { icon: User, label: "Profil", path: `${basePath}/profil` },
+    { icon: Award, label: "Tugas", path: `${basePath}/tugas` },
     { icon: BarChart3, label: "Analisis", path: `${basePath}/analisis` },
     { icon: Clock, label: "Riwayat Transaksi", path: `${basePath}/riwayat` },
     { icon: Building2, label: "Cari Investor", path: `${basePath}/cari-investor` },
