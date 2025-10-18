@@ -15,13 +15,13 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
     { icon: Home, label: "Halaman Utama", path: basePath },
     { icon: BarChart3, label: "Analisis", path: `${basePath}/analisis` },
     { icon: Clock, label: "Riwayat Transaksi", path: `${basePath}/riwayat` },
+    { icon: Building2, label: "Cari Investor", path: `${basePath}/cari-investor` },
   ];
 
   const investorLinks = [
     { icon: Home, label: "Halaman Utama", path: basePath },
     { icon: BarChart3, label: "Analisis", path: `${basePath}/analisis` },
     { icon: Clock, label: "Riwayat Transaksi", path: `${basePath}/riwayat` },
-    { icon: Building2, label: "List UMKM", path: `${basePath}/umkm-list` },
   ];
 
   const links = type === "umkm" ? umkmLinks : investorLinks;

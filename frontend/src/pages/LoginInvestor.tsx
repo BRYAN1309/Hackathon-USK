@@ -11,12 +11,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import logo from "@/assets/logo.svg";
-import { loginInvestor } from "@/api/investor"; // 🔹 tambahkan ini
-import { toast } from "sonner"; // opsional jika pakai notifikasi
+import { loginInvestor } from "@/api/investor";
+import { toast } from "sonner";
 
 const LoginInvestor = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
