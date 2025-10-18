@@ -13,3 +13,5 @@ cryptography
 requests
 joblib
 numpy
+xgboost
+scikit-learn
