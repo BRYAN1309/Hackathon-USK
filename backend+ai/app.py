@@ -14,7 +14,7 @@ from view.response_view import error_response,success_response
 load_dotenv()
 
 # Controllers
-from controller import user_umkm_controller, umkm_controller, investor_controller, transaksi_controller
+from controller import user_umkm_controller, umkm_controller, investor_controller,transaksi_controller, data_bulanan_controller,kyc_controller
 
 # Generate configuration
 config = generate_config()
@@ -243,6 +243,19 @@ def get_transaksi_by_user_id(user_id):
         return error_response(message)
     return success_response(message, data)
 
+@app.route("/data-bulanan/<int:user_id>", methods=["GET"], endpoint="data_bulanan_api")
+def get_data_bulanan_by_user_id(user_id):
+    data, message = data_bulanan_controller.DataBulananController.get_data_bulanan_by_user_id(user_id)
+    if data is None:
+        return error_response(message)
+    return success_response(message, data)
+
+@app.route("/kyc/<int:user_id>", methods=["GET"], endpoint="kyc_api")
+def get_kyc_by_user_id(user_id):
+    data, message = kyc_controller.KYCController.get_kyc_by_user_id(user_id)
+    if data is None:
+        return error_response(message)
+    return success_response(message, data)
 # =========================================================
 # 🔹 Health Check Routes
 # =========================================================
