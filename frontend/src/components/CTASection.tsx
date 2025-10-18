@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import ctaBgImage from "@/assets/investorPit.webp"; // Impor gambar background
+import ctaBgImage from "@/assets/investorPit.jpg";
 
 export const CTASection = () => {
   return (
@@ -51,11 +51,11 @@ export const CTASection = () => {
                 info@temanusaha.id
               </a>
               <span className="hidden sm:inline text-gray-400">•</span>
-              <a href="tel:+6281234567890" className="story-link font-medium text-white">
-                +62 812-3456-7890
+              <a href="tel:+6282116801709" className="story-link font-medium text-white">
+                +62 821-1680-1709
               </a>
               <span className="hidden sm:inline text-gray-400">•</span>
-              <a href="https://wa.me/6281234567890" className="story-link font-medium text-white">
+              <a href="https://wa.me/6282116801709" className="story-link font-medium text-white">
                 WhatsApp Support
               </a>
             </div>

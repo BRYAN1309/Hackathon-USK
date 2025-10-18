@@ -16,6 +16,8 @@ import RiwayatTransaksiUMKM from "./pages/RiwayatTransaksiUMKM";
 import AnalisisUMKM from "./pages/AnalisisUMKM";
 import DigitalisasiGuide from "./pages/DigitalisasiGuide";
 import NotFound from "./pages/NotFound";
+import AnalisisInvestor from "./pages/AnalisisInvestor";
+import RiwayatTransaksiInvestor from "./pages/RiwayatTransaksiInvestor";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/dashboard-umkm/analisis" element={<AnalisisUMKM />} />
           <Route path="/dashboard-umkm/riwayat" element={<RiwayatTransaksiUMKM />} />
           <Route path="/dashboard-investor" element={<DashboardInvestor />} />
+          <Route path="/dashboard-investor/analisis" element={<AnalisisInvestor />} />
+          <Route path="/dashboard-investor/riwayat" element={<RiwayatTransaksiInvestor />} />
           <Route path="/dashboard-investor/umkm-list" element={<UMKMList />} />
           <Route path="/dashboard-investor/umkm/:id" element={<UMKMDetail />} />
           <Route path="/digitalisasi-guide" element={<DigitalisasiGuide />} />

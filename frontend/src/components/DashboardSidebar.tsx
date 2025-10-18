@@ -30,8 +30,14 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
     <aside className="w-64 bg-background border-r border-border min-h-screen flex flex-col">
       <div className="p-6 border-b border-border">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="TemanUsaha" className="w-12 h-12" />
-          <span className="font-bold text-lg">TemanUsaha</span>
+          <div className="relative w-full">
+            <img
+              src={logo}
+              alt="TemanUsaha"
+              className="block mx-auto w-48 h-auto md:w-56 drop-shadow-md transition-transform duration-300 hover:scale-105"
+              style={{ position: "relative", left: "30px" }}
+            />
+          </div>
         </Link>
       </div>
 

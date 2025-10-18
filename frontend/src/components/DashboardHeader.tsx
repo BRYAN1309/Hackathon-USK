@@ -15,11 +15,7 @@ export const DashboardHeader = ({ userName = "User" }: DashboardHeaderProps) => 
   return (
     <header className="bg-background border-b border-border py-4 px-6">
       <div className="flex items-center justify-end">
-        <Avatar className="w-10 h-10">
-          <AvatarFallback className="bg-primary text-primary-foreground">
-            {initials || <User className="w-5 h-5" />}
-          </AvatarFallback>
-        </Avatar>
+        <span className="font-bold text-lg">{userName}</span>
       </div>
     </header>
   );

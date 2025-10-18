@@ -74,12 +74,12 @@ export const monthlyData = [
   ];
 
   export const creditScoreData = [
-    { month: "Jan", score: 650 },
-    { month: "Feb", score: 670 },
-    { month: "Mar", score: 690 },
-    { month: "Apr", score: 710 },
-    { month: "Mei", score: 730 },
-    { month: "Jun", score: 750 },
+    { month: "Jan", score: 89 },
+    { month: "Feb", score: 76 },
+    { month: "Mar", score: 75 },
+    { month: "Apr", score: 75 },
+    { month: "Mei", score: 80 },
+    { month: "Jun", score: 90 },
   ];
 
   export const transactions = [
@@ -93,7 +93,7 @@ export const monthlyData = [
 
   export const umkmDetail = {
     name: "Warung Sederhana",
-    creditScore: 750,
+    creditScore: 78,
     location: "Papua",
     category: "Makanan",
     age: "3 tahun",
