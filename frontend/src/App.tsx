@@ -1,3 +1,4 @@
+// src/App.tsx
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,7 +21,9 @@ import AnalisisInvestor from "./pages/AnalisisInvestor";
 import RiwayatTransaksiInvestor from "./pages/RiwayatTransaksiInvestor";
 import ListInvestor from "./pages/ListInvestor";
 import FundingProposal from "./pages/FundingProposal";
-import InvestorRequests from "./pages/InvestorRequests"; // Pastikan import ini ada
+import InvestorRequests from "./pages/InvestorRequests";
+import UMKMProfile from "./pages/UMKMProfile"; // Import baru
+import UMKMTugas from "./pages/UMKMTugas"; // Import baru
 
 const queryClient = new QueryClient();
 
@@ -36,19 +39,27 @@ const App = () => (
           <Route path="/login-investor" element={<LoginInvestor />} />
           <Route path="/register-umkm" element={<RegisterUMKM />} />
           <Route path="/register-investor" element={<RegisterInvestor />} />
+          
+          {/* Rute UMKM */}
           <Route path="/dashboard-umkm" element={<DashboardUMKM />} />
+          <Route path="/dashboard-umkm/profil" element={<UMKMProfile />} />
+          <Route path="/dashboard-umkm/tugas" element={<UMKMTugas />} />
           <Route path="/dashboard-umkm/analisis" element={<AnalisisUMKM />} />
           <Route path="/dashboard-umkm/riwayat" element={<RiwayatTransaksiUMKM />} />
           <Route path="/dashboard-umkm/cari-investor" element={<ListInvestor />} />
+          
+          {/* Rute Investor */}
           <Route path="/dashboard-investor" element={<DashboardInvestor />} />
           <Route path="/dashboard-investor/analisis" element={<AnalisisInvestor />} />
           <Route path="/dashboard-investor/riwayat" element={<RiwayatTransaksiInvestor />} />
           <Route path="/dashboard-investor/umkm-list" element={<UMKMList />} />
           <Route path="/dashboard-investor/umkm/:id" element={<UMKMDetail />} />
-          <Route path="/dashboard-investor/requests" element={<InvestorRequests />} /> {/* Rute untuk permintaan */}
+          <Route path="/dashboard-investor/requests" element={<InvestorRequests />} />
+          
+          {/* Rute Lainnya */}
           <Route path="/digitalisasi-guide" element={<DigitalisasiGuide />} />
           <Route path="/funding-proposal/:id" element={<FundingProposal />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
