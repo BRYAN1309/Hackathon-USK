@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { StepIndicator } from "@/components/StepIndicator";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.svg";
+import umkmBg from "@/assets/umkm-3.jpg";
 
 const RegisterUMKM = () => {
   const navigate = useNavigate();
@@ -19,22 +20,17 @@ const RegisterUMKM = () => {
   const steps = ["Identitas", "Profil Bisnis", "Selesai"];
 
   const [formData, setFormData] = useState({
-    // Step 1
     nama: "",
     email: "",
     password: "",
     nik: "",
     phone: "",
     ktp: null as File | null,
-    // Step 2
     namaBisnis: "",
     kategori: "",
     umurBisnis: "",
     alamat: "",
     provinsi: "",
-    kabupaten: "",
-    kecamatan: "",
-    desa: "",
     jumlahKaryawan: "",
     nmid: "",
     nr: "",
@@ -62,8 +58,12 @@ const RegisterUMKM = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary py-12 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <div
+      className="relative min-h-screen w-full bg-cover bg-center py-12 px-4"
+      style={{ backgroundImage: `url(${umkmBg})` }}
+    >
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <div className="container mx-auto max-w-4xl relative z-10">
         <div className="text-center mb-8">
           <div className="relative w-full">
             <img
@@ -73,7 +73,7 @@ const RegisterUMKM = () => {
               style={{ position: "relative", left: "30px" }}
             />
           </div>
-          <h1 className="text-3xl font-bold">Daftar sebagai UMKM</h1>
+          <h1 className="text-3xl font-bold text-white">Daftar sebagai UMKM</h1>
         </div>
 
         <StepIndicator currentStep={currentStep} totalSteps={3} steps={steps} />
@@ -83,7 +83,6 @@ const RegisterUMKM = () => {
             <CardTitle>{steps[currentStep - 1]}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {/* Step 1: Identitas */}
             {currentStep === 1 && (
               <>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -146,7 +145,6 @@ const RegisterUMKM = () => {
               </>
             )}
 
-            {/* Step 2: Profil Bisnis & Detail Digital */}
             {currentStep === 2 && (
               <>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -170,9 +168,6 @@ const RegisterUMKM = () => {
                       <SelectContent>
                         <SelectItem value="kuliner">Kuliner</SelectItem>
                         <SelectItem value="fashion">Fashion</SelectItem>
-                        <SelectItem value="agribisnis">Agribisnis</SelectItem>
-                        <SelectItem value="jasa">Jasa</SelectItem>
-                        <SelectItem value="industri">Industri</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -205,13 +200,13 @@ const RegisterUMKM = () => {
                     onChange={(e) => setFormData({ ...formData, alamat: e.target.value })}
                   />
                 </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="provinsi">Provinsi</Label>
-                    <Input
-                      id="provinsi"
-                      value={formData.provinsi}
-                      onChange={(e) => setFormData({ ...formData, provinsi: e.target.value })}
-                    />
+                <div className="space-y-2">
+                  <Label htmlFor="provinsi">Provinsi</Label>
+                  <Input
+                    id="provinsi"
+                    value={formData.provinsi}
+                    onChange={(e) => setFormData({ ...formData, provinsi: e.target.value })}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label>Apakah bisnis Anda sudah terdigitalisasi?</Label>
@@ -227,10 +222,9 @@ const RegisterUMKM = () => {
                   </RadioGroup>
                 </div>
 
-                {/* Conditionally render digital detail form */}
                 {isDigitalized === 'yes' && (
                   <div className="space-y-4 pt-4 mt-4 border-t">
-                     <div className="space-y-2">
+                    <div className="space-y-2">
                       <Label htmlFor="nmid">Nomor Rekening QRIS (NMID)</Label>
                       <Input
                         id="nmid"
@@ -259,24 +253,8 @@ const RegisterUMKM = () => {
               </>
             )}
 
-            {/* Step 3: Selesai */}
             {currentStep === 3 && (
               <div className="text-center py-8">
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-10 h-10 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
                 <h3 className="text-2xl font-bold mb-2">Usaha Anda Berhasil Didaftarkan!</h3>
                 <p className="text-muted-foreground">
                   Selamat! Akun UMKM Anda telah berhasil dibuat.
@@ -284,7 +262,6 @@ const RegisterUMKM = () => {
               </div>
             )}
 
-            {/* Navigation Buttons */}
             <div className="flex justify-between pt-6">
               {currentStep > 1 && currentStep < 3 && (
                 <Button variant="outline" onClick={handleBack}>

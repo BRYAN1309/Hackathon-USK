@@ -1,15 +1,36 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { DashboardHeader } from "@/components/DashboardHeader";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { MapPin, TrendingUp, Calendar, Users } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { MapPin, TrendingUp, Calendar, Users, CheckCircle2 } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { umkmDetail, financialData } from "@/data/umkm";
 
 const UMKMDetail = () => {
   const { id } = useParams();
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [investmentAmount, setInvestmentAmount] = useState("");
+  const [sharingType, setSharingType] = useState("percentage");
+  const [percentage, setPercentage] = useState("");
+  const [roi, setRoi] = useState("");
+
+  const handleInvest = () => {
+    // Logika untuk mengirim data investasi
+    console.log({
+      investmentAmount,
+      sharingType,
+      percentage,
+      roi,
+    });
+    setShowSuccess(true);
+  };
 
   return (
     <div className="flex min-h-screen bg-secondary">
@@ -47,10 +68,11 @@ const UMKMDetail = () => {
 
           {/* Tabs */}
           <Tabs defaultValue="description" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="description">Deskripsi</TabsTrigger>
-              <TabsTrigger value="financial">Keuangan</TabsTrigger>
-              <TabsTrigger value="documents">Dokumen</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="description" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Deskripsi</TabsTrigger>
+              <TabsTrigger value="financial" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Keuangan</TabsTrigger>
+              <TabsTrigger value="documents" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Dokumen</TabsTrigger>
+              <TabsTrigger value="invest" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Investasi</TabsTrigger>
             </TabsList>
 
             {/* Deskripsi Tab */}
@@ -79,9 +101,6 @@ const UMKMDetail = () => {
                       <p className="font-bold text-lg text-primary">{umkmDetail.modalDibutuhkan}</p>
                     </div>
                   </div>
-                  <Button className="w-full md:w-auto" size="lg">
-                    Investasi Sekarang
-                  </Button>
                 </CardContent>
               </Card>
             </TabsContent>
@@ -180,9 +199,92 @@ const UMKMDetail = () => {
                 </CardContent>
               </Card>
             </TabsContent>
+
+            {/* Investasi Tab */}
+            <TabsContent value="invest" className="space-y-4 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Mulai Investasi</CardTitle>
+                  <CardDescription>Isi form di bawah untuk berinvestasi pada UMKM ini.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <Label htmlFor="investmentAmount">Jumlah Investasi (Rp)</Label>
+                    <Input
+                      id="investmentAmount"
+                      type="number"
+                      placeholder="Contoh: 50000000"
+                      value={investmentAmount}
+                      onChange={(e) => setInvestmentAmount(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <Label>Opsi Bagi Hasil</Label>
+                    <RadioGroup value={sharingType} onValueChange={setSharingType} className="flex gap-4 mt-2">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="percentage" id="percentage" />
+                        <Label htmlFor="percentage">Persentase Saham</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="roi" id="roi" />
+                        <Label htmlFor="roi">ROI</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+
+                  {sharingType === "percentage" && (
+                    <div>
+                      <Label htmlFor="percentage-input">Persentase Saham (%)</Label>
+                      <Input
+                        id="percentage-input"
+                        type="number"
+                        placeholder="Contoh: 15"
+                        value={percentage}
+                        onChange={(e) => setPercentage(e.target.value)}
+                      />
+                    </div>
+                  )}
+
+                  {sharingType === "roi" && (
+                    <div>
+                      <Label htmlFor="roi-input">Imbal Hasil Investasi (ROI) (%)</Label>
+                      <Input
+                        id="roi-input"
+                        type="number"
+                        placeholder="Contoh: 20"
+                        value={roi}
+                        onChange={(e) => setRoi(e.target.value)}
+                      />
+                    </div>
+                  )}
+
+                  <Button onClick={handleInvest} className="w-full">
+                    Investasi Sekarang
+                  </Button>
+                </CardContent>
+              </Card>
+            </TabsContent>
           </Tabs>
         </main>
       </div>
+
+      {/* Success Dialog */}
+      <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
+        <DialogContent>
+          <DialogHeader>
+            <div className="mx-auto mb-4 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+              <CheckCircle2 className="w-10 h-10 text-primary" />
+            </div>
+            <DialogTitle className="text-center text-2xl">Investasi Berhasil!</DialogTitle>
+            <DialogDescription className="text-center pt-2">
+              Investasi Anda telah berhasil diajukan. Anda akan mendapatkan notifikasi selanjutnya.
+            </DialogDescription>
+          </DialogHeader>
+          <Button onClick={() => setShowSuccess(false)} className="w-full mt-4">
+            Selesai
+          </Button>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

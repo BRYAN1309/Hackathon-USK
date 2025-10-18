@@ -19,6 +19,24 @@ const RiwayatTransaksiInvestor = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("date");
 
+  // START: Logique de filtrage et de tri
+  const filteredAndSortedTransactions = investorTransactions
+    .filter((transaction) =>
+      transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "amount-high":
+          return b.amount - a.amount;
+        case "amount-low":
+          return a.amount - b.amount;
+        case "date":
+        default:
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+      }
+    });
+  // END: Logique de filtrage et de tri
+
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="investor" />
@@ -54,7 +72,8 @@ const RiwayatTransaksiInvestor = () => {
           <Card>
             <CardContent className="p-6">
               <div className="space-y-4">
-                {investorTransactions.map((transaction) => (
+                {/* Utilisez la nouvelle variable ici */}
+                {filteredAndSortedTransactions.map((transaction) => (
                   <div
                     key={transaction.id}
                     className="flex items-center justify-between p-4 bg-secondary rounded-lg hover:bg-muted transition-colors"

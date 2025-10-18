@@ -2,7 +2,7 @@ export const umkmData = [
   {
     id: 1,
     name: "Warung Sederhana",
-    creditScore: 750,
+    creditScore: 89,
     description: "Warung makan tradisional dengan menu nusantara",
     modalDibutuhkan: "Rp 20.000.000",
     location: "Papua",
@@ -10,7 +10,7 @@ export const umkmData = [
   {
     id: 2,
     name: "Cafe Nusantara",
-    creditScore: 720,
+    creditScore: 72,
     description: "Cafe dengan konsep modern dan menu lokal",
     modalDibutuhkan: "Rp 35.000.000",
     location: "Maluku",
@@ -18,7 +18,7 @@ export const umkmData = [
   {
     id: 3,
     name: "Resto Tradisional",
-    creditScore: 680,
+    creditScore: 56,
     description: "Restoran dengan masakan khas daerah",
     modalDibutuhkan: "Rp 50.000.000",
     location: "NTT",
@@ -26,7 +26,7 @@ export const umkmData = [
   {
     id: 4,
     name: "Kedai Kopi Asli",
-    creditScore: 690,
+    creditScore: 76,
     description: "Kedai kopi dengan biji kopi lokal berkualitas",
     modalDibutuhkan: "Rp 15.000.000",
     location: "Papua Barat",

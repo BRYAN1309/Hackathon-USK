@@ -13,6 +13,7 @@ import {
 import logo from "@/assets/logo.svg";
 import { loginInvestor } from "@/api/investor";
 import { toast } from "sonner";
+import investorBg from "@/assets/investorPit-2.jpg";
 
 const LoginInvestor = () => {
   const navigate = useNavigate();
@@ -26,12 +27,10 @@ const LoginInvestor = () => {
 
     try {
       const res = await loginInvestor(email, password);
-
-      // Simpan token & data user ke localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("investor", JSON.stringify(res.data.investor));
 
-      toast.success("Login berhasil!"); // opsional
+      toast.success("Login berhasil!");
       navigate("/dashboard-investor");
     } catch (err: any) {
       toast.error(err.message || "Login gagal");
@@ -41,8 +40,12 @@ const LoginInvestor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg">
+    <div
+      className="relative min-h-screen w-full flex items-center justify-center p-4 bg-cover bg-center"
+      style={{ backgroundImage: `url(${investorBg})` }}
+    >
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <Card className="w-full max-w-md shadow-lg z-10">
         <CardHeader className="space-y-4 text-center">
           <div className="relative w-full">
             <img

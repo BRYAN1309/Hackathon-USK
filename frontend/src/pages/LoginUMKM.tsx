@@ -13,6 +13,7 @@ import {
 import logo from "@/assets/logo.svg";
 import { loginUser } from "@/api/auth";
 import { useToast } from "@/hooks/use-toast";
+import umkmBg from "@/assets/umkm-3.jpg";
 
 const LoginUMKM = () => {
   const navigate = useNavigate();
@@ -27,7 +28,6 @@ const LoginUMKM = () => {
 
     try {
       const res = await loginUser(email, password);
-      // Simpan token ke localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
@@ -50,8 +50,12 @@ const LoginUMKM = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg">
+    <div
+      className="relative min-h-screen w-full flex items-center justify-center p-4 bg-cover bg-center"
+      style={{ backgroundImage: `url(${umkmBg})` }}
+    >
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <Card className="w-full max-w-md shadow-lg z-10">
         <CardHeader className="space-y-4 text-center">
           <div className="relative w-full">
             <img
@@ -77,7 +81,6 @@ const LoginUMKM = () => {
                 required
               />
             </div>
-
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input
@@ -89,7 +92,6 @@ const LoginUMKM = () => {
                 required
               />
             </div>
-
             <Button
               type="submit"
               className="w-full"
@@ -98,7 +100,6 @@ const LoginUMKM = () => {
             >
               {loading ? "Memproses..." : "Masuk"}
             </Button>
-
             <p className="text-center text-sm text-muted-foreground">
               Belum punya akun?{" "}
               <Link

@@ -75,7 +75,7 @@ const DigitalisasiGuide = () => {
               Tim kami siap membantu Anda dalam proses digitalisasi usaha. Hubungi kami di:
             </p>
             <div className="space-y-2">
-              <p className="font-medium">📱 WhatsApp: +62 812-3456-7890</p>
+              <p className="font-medium">📱 WhatsApp: +62 821 1680 1709</p>
               <p className="font-medium">📧 Email: support@temanusaha.id</p>
             </div>
           </CardContent>

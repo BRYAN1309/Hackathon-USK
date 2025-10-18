@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, BarChart3, Clock, LogOut, Building2 } from "lucide-react";
+import { Home, BarChart3, Clock, LogOut, Building2, Search, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.svg";
 
@@ -20,6 +20,8 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
 
   const investorLinks = [
     { icon: Home, label: "Halaman Utama", path: basePath },
+    { icon: Search, label: "Cari UMKM", path: `${basePath}/umkm-list` },
+    { icon: FileText, label: "Permintaan", path: `${basePath}/requests` },
     { icon: BarChart3, label: "Analisis", path: `${basePath}/analisis` },
     { icon: Clock, label: "Riwayat Transaksi", path: `${basePath}/riwayat` },
   ];

@@ -20,6 +20,7 @@ import AnalisisInvestor from "./pages/AnalisisInvestor";
 import RiwayatTransaksiInvestor from "./pages/RiwayatTransaksiInvestor";
 import ListInvestor from "./pages/ListInvestor";
 import FundingProposal from "./pages/FundingProposal";
+import InvestorRequests from "./pages/InvestorRequests"; // Pastikan import ini ada
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/dashboard-investor/riwayat" element={<RiwayatTransaksiInvestor />} />
           <Route path="/dashboard-investor/umkm-list" element={<UMKMList />} />
           <Route path="/dashboard-investor/umkm/:id" element={<UMKMDetail />} />
+          <Route path="/dashboard-investor/requests" element={<InvestorRequests />} /> {/* Rute untuk permintaan */}
           <Route path="/digitalisasi-guide" element={<DigitalisasiGuide />} />
           <Route path="/funding-proposal/:id" element={<FundingProposal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
