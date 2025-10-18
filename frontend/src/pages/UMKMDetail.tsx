@@ -22,7 +22,6 @@ const UMKMDetail = () => {
   const [roi, setRoi] = useState("");
 
   const handleInvest = () => {
-    // Logika untuk mengirim data investasi
     console.log({
       investmentAmount,
       sharingType,
@@ -37,8 +36,7 @@ const UMKMDetail = () => {
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
-          {/* Header Section */}
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <div className="flex items-start justify-between">
             <div>
               <h1 className="text-3xl font-bold mb-2">{umkmDetail.name}</h1>
@@ -66,16 +64,13 @@ const UMKMDetail = () => {
             </div>
           </div>
 
-          {/* Tabs */}
           <Tabs defaultValue="description" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="description" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Deskripsi</TabsTrigger>
-              <TabsTrigger value="financial" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Keuangan</TabsTrigger>
-              <TabsTrigger value="documents" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Dokumen</TabsTrigger>
-              <TabsTrigger value="invest" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Investasi</TabsTrigger>
+              <TabsTrigger value="description" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Deskripsi</TabsTrigger>
+              <TabsTrigger value="financial" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Keuangan</TabsTrigger>
+              <TabsTrigger value="documents" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Dokumen</TabsTrigger>
+              <TabsTrigger value="invest" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Investasi</TabsTrigger>
             </TabsList>
-
-            {/* Deskripsi Tab */}
             <TabsContent value="description" className="space-y-6 mt-6">
               <Card>
                 <CardContent className="p-6 space-y-4">
@@ -105,7 +100,6 @@ const UMKMDetail = () => {
               </Card>
             </TabsContent>
 
-            {/* Keuangan Tab */}
             <TabsContent value="financial" className="space-y-6 mt-6">
               <Card>
                 <CardContent className="p-6">
@@ -157,7 +151,6 @@ const UMKMDetail = () => {
               </div>
             </TabsContent>
 
-            {/* Dokumen Tab */}
             <TabsContent value="documents" className="space-y-4 mt-6">
               <Card>
                 <CardContent className="p-6 space-y-4">
@@ -199,8 +192,6 @@ const UMKMDetail = () => {
                 </CardContent>
               </Card>
             </TabsContent>
-
-            {/* Investasi Tab */}
             <TabsContent value="invest" className="space-y-4 mt-6">
               <Card>
                 <CardHeader>
@@ -267,8 +258,6 @@ const UMKMDetail = () => {
           </Tabs>
         </main>
       </div>
-
-      {/* Success Dialog */}
       <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
         <DialogContent>
           <DialogHeader>

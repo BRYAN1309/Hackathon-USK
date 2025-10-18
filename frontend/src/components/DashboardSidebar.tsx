@@ -1,4 +1,3 @@
-// src/components/DashboardSidebar.tsx
 import { Link, useLocation } from "react-router-dom";
 import { Home, BarChart3, Clock, LogOut, Building2, Search, FileText, User, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,8 +31,8 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
   const links = type === "umkm" ? umkmLinks : investorLinks;
 
   return (
-    <aside className="w-64 bg-background border-r border-border min-h-screen flex flex-col">
-      <div className="p-6 border-b border-border">
+    <aside className="w-64 sidebar-gradient min-h-screen flex flex-col">
+      <div className="p-6 border-b border-white/20">
         <Link to="/" className="flex items-center gap-3">
           <div className="relative w-full">
             <img
@@ -57,8 +56,8 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
               to={link.path}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                 isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-foreground hover:bg-secondary"
+                  ? "bg-white/20 text-white"
+                  : "text-white/80 hover:bg-white/10 hover:text-white"
               }`}
             >
               <Icon className="w-5 h-5" />
@@ -68,10 +67,10 @@ export const DashboardSidebar = ({ type }: DashboardSidebarProps) => {
         })}
       </nav>
 
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-white/20">
         <Button
           variant="ghost"
-          className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10"
+          className="w-full justify-start text-white/80 hover:bg-white/10 hover:text-white"
           onClick={() => window.location.href = "/"}
         >
           <LogOut className="w-5 h-5 mr-3" />

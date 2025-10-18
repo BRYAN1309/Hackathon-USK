@@ -1,11 +1,10 @@
-// src/pages/UMKMProfile.tsx
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Award, Building, Mail, MapPin, Phone, User } from "lucide-react";
+import { Award, Mail, MapPin, Phone, User } from "lucide-react";
 import { umkmDetail } from "@/data/umkm";
 import { userGamification, gamificationLevels } from "@/data/gamification";
 
@@ -22,13 +21,12 @@ const UMKMProfile = () => {
       <DashboardSidebar type="umkm" />
       <div className="flex-1">
         <DashboardHeader userName={umkmDetail.name} />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Profil Usaha</h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Kolom Kiri - Info Usaha & Gamifikasi */}
             <div className="lg:col-span-2 space-y-6">
-              <Card>
+              <Card className="card-gradient">
                 <CardHeader>
                   <CardTitle>Detail Usaha</CardTitle>
                 </CardHeader>
@@ -40,32 +38,30 @@ const UMKMProfile = () => {
                     </Avatar>
                     <div>
                       <h2 className="text-2xl font-bold">{umkmDetail.name}</h2>
-                      <p className="text-muted-foreground">{umkmDetail.category}</p>
+                      <p className="text-white/80">{umkmDetail.category}</p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t">
+                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/30">
                     <div className="flex items-center gap-2">
-                      <User className="w-4 h-4 text-muted-foreground" />
+                      <User className="w-4 h-4 text-white/80" />
                       <span>{umkmDetail.owner}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-muted-foreground" />
+                      <Phone className="w-4 h-4 text-white/80" />
                       <span>{umkmDetail.contact}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-muted-foreground" />
+                      <Mail className="w-4 h-4 text-white/80" />
                       <span>email@contoh.com</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-muted-foreground" />
+                      <MapPin className="w-4 h-4 text-white/80" />
                       <span>{umkmDetail.location}</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
-
-            {/* Kolom Kanan - Gamifikasi */}
             <div className="space-y-6">
               <Card>
                 <CardHeader>

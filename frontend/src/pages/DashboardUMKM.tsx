@@ -1,49 +1,43 @@
-// src/pages/DashboardUMKM.tsx
+import { useState } from "react";
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { StatCard } from "@/components/StatCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrendingUp, TrendingDown, DollarSign, User, BarChart3, LineChart as LineIcon, AlertTriangle, Award } from "lucide-react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Bar, BarChart } from "recharts";
+import { TrendingUp, TrendingDown, DollarSign, User, Wallet, LineChart as LineIcon, Award } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { transactionData } from "@/data/umkm";
 import { userGamification } from "@/data/gamification";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-
-const roiData = [
-  { month: "Jan", roi: 5 },
-  { month: "Feb", roi: 8 },
-  { month: "Mar", roi: 7 },
-  { month: "Apr", roi: 9 },
-  { month: "May", roi: 11 },
-  { month: "Jun", roi: 12 },
-];
-
-const investorConfidenceData = [
-  { factor: "Transparansi", value: 95 },
-  { factor: "Stabilitas", value: 88 },
-  { factor: "Kepatuhan", value: 91 },
-  { factor: "Pertumbuhan", value: 86 },
-];
-
 const DashboardUMKM = () => {
+  const [totalModal, setTotalModal] = useState(100000000);
+  const [notificationOpen, setNotificationOpen] = useState(false);
+
+  const handleKlaim = () => {
+    setTotalModal(prevModal => prevModal + 50000000);
+    setNotificationOpen(false);
+  };
+
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="umkm" />
       <div className="flex-1">
-        <DashboardHeader userName="Warung Makan Sederhana" />
-        <main className="p-6 space-y-8">
+        <DashboardHeader
+          userName="Warung Makan Sederhana"
+          notificationOpen={notificationOpen}
+          setNotificationOpen={setNotificationOpen}
+          handleKlaim={handleKlaim}
+        />
+        <main className="p-6 space-y-8 animate-fade-in-up">
           <h1 className="text-3xl font-bold tracking-tight">Dashboard UMKM</h1>
           <p className="text-muted-foreground">
             Pantau performa keuangan, pertumbuhan usaha, dan insight kredit Anda secara real-time.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Main Content */}
             <div className="lg:col-span-2 space-y-6">
-               {/* Statistik Utama */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <StatCard
                   title="Total Pendapatan"
@@ -51,6 +45,7 @@ const DashboardUMKM = () => {
                   icon={TrendingUp}
                   trend="+12% dari bulan lalu"
                   trendUp={true}
+                  isGradient
                 />
                 <StatCard
                   title="Total Pengeluaran"
@@ -58,6 +53,7 @@ const DashboardUMKM = () => {
                   icon={TrendingDown}
                   trend="-5% dari bulan lalu"
                   trendUp={false}
+                  isGradient
                 />
                 <StatCard
                   title="Net Profit"
@@ -65,16 +61,16 @@ const DashboardUMKM = () => {
                   icon={DollarSign}
                   trend="+8% dari bulan lalu"
                   trendUp={true}
+                  isGradient
                 />
                 <StatCard
                   title="Investor Aktif"
                   value="3 Investor"
                   icon={User}
                   trend="Tingkat retensi 60%"
+                  isGradient
                 />
               </div>
-
-               {/* Arus Transaksi Bulanan */}
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -94,9 +90,7 @@ const DashboardUMKM = () => {
                 </CardContent>
               </Card>
             </div>
-             {/* Sidebar Kanan */}
              <div className="space-y-6">
-               {/* Gamification Card */}
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
@@ -116,12 +110,16 @@ const DashboardUMKM = () => {
                   <p className="text-xs text-muted-foreground text-center mb-4">
                     500 poin lagi untuk mencapai level Emas!
                   </p>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full" variant="transparent-gradient">
                     <Link to="/dashboard-umkm/tugas">Lihat Semua Misi</Link>
                   </Button>
                 </CardContent>
               </Card>
-               {/* Credit Score Card */}
+              <StatCard
+                  title="Total Modal"
+                  value={`Rp ${Math.round(totalModal / 1000000)}JT`}
+                  icon={Wallet}
+                />
               <Card>
                 <CardHeader>
                   <CardTitle>Credit Score</CardTitle>

@@ -18,10 +18,8 @@ const AnalisisInvestor = () => {
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Analisis Investor</h1>
-
-          {/* Investment Growth */}
           <Card>
             <CardHeader>
               <CardTitle>Pertumbuhan Investasi</CardTitle>
@@ -40,7 +38,6 @@ const AnalisisInvestor = () => {
           </Card>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Portfolio Distribution */}
             <Card>
               <CardHeader>
                 <CardTitle>Distribusi Portofolio</CardTitle>
@@ -67,8 +64,6 @@ const AnalisisInvestor = () => {
                 </ResponsiveContainer>
               </CardContent>
             </Card>
-            
-            {/* Top Performing UMKM */}
             <Card>
               <CardHeader>
                 <CardTitle>UMKM Performa Terbaik</CardTitle>

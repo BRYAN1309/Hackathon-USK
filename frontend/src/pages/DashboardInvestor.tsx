@@ -12,10 +12,8 @@ const DashboardInvestor = () => {
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Dashboard Investor</h1>
-
-          {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <StatCard
               title="Total Investasi"
@@ -23,6 +21,7 @@ const DashboardInvestor = () => {
               icon={Wallet}
               trend="+20% dari bulan lalu"
               trendUp={true}
+              isGradient
             />
             <StatCard
               title="ROI"
@@ -30,6 +29,7 @@ const DashboardInvestor = () => {
               icon={TrendingUp}
               trend="+2.3% dari bulan lalu"
               trendUp={true}
+              isGradient
             />
             <StatCard
               title="Total Revenue Portfolio"
@@ -37,10 +37,9 @@ const DashboardInvestor = () => {
               icon={DollarSign}
               trend="+15% dari bulan lalu"
               trendUp={true}
+              isGradient
             />
           </div>
-
-          {/* Investment Growth Chart */}
           <Card>
             <CardHeader>
               <CardTitle>Pertumbuhan Investasi</CardTitle>
@@ -57,8 +56,6 @@ const DashboardInvestor = () => {
               </ResponsiveContainer>
             </CardContent>
           </Card>
-
-          {/* Top 3 UMKM */}
           <Card>
             <CardHeader>
               <CardTitle>Top 3 UMKM</CardTitle>

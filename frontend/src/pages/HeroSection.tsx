@@ -5,7 +5,6 @@ import heroImage from "@/assets/hero-image.jpg";
 export const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-end pb-24 overflow-hidden">
-      {/* Background Image with a lighter, more opaque overlay */}
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
@@ -14,11 +13,8 @@ export const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-white/80" />
       </div>
-
-      {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl">
-          {/* Reduced font size and changed text color to foreground/black */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             BISNIS YANG <span className="text-primary">ANDA</span> IMPIKAN,
             <br />
@@ -28,8 +24,6 @@ export const HeroSection = () => {
           <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed animate-fade-in-up" style={{ animationDelay: '400ms' }}>
             Platform AI Micro-Investment yang mempertemukan UMKM F&B wilayah 3T dengan investor untuk pertumbuhan dan kesuksesan tanpa batas.
           </p>
-
-          {/* CTA Buttons - Text updated to match the screenshot */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
             <Button 
               asChild 

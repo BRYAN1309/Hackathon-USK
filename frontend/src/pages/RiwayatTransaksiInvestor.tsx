@@ -5,12 +5,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, ArrowRightLeft } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const investorTransactions = [
-    { id: 1, date: "2024-06-10", description: "Investasi di Warung Sederhana", amount: -20000000, type: "investment" },
+    { id: 1, date: "2024-06-10", description: "Investasi di Warung Makan Sederhana", amount: -20000000, type: "investment" },
     { id: 2, date: "2024-06-05", description: "Payout dari Cafe Nusantara", amount: 1500000, type: "payout" },
     { id: 3, date: "2024-05-20", description: "Investasi di Resto Tradisional", amount: -15000000, type: "investment" },
-    { id: 4, date: "2024-05-10", description: "Payout dari Warung Sederhana", amount: 1200000, type: "payout" },
+    { id: 4, date: "2024-05-10", description: "Payout dari Warung Makan Sederhana", amount: 1200000, type: "payout" },
     { id: 5, date: "2024-04-15", description: "Investasi di Kedai Kopi Asli", amount: -10000000, type: "investment" },
 ];
 
@@ -18,8 +19,6 @@ const investorTransactions = [
 const RiwayatTransaksiInvestor = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("date");
-
-  // START: Logique de filtrage et de tri
   const filteredAndSortedTransactions = investorTransactions
     .filter((transaction) =>
       transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -35,17 +34,13 @@ const RiwayatTransaksiInvestor = () => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
       }
     });
-  // END: Logique de filtrage et de tri
-
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Riwayat Transaksi Investor</h1>
-
-          {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
@@ -68,29 +63,40 @@ const RiwayatTransaksiInvestor = () => {
             </Select>
           </div>
 
-          {/* Transactions List */}
           <Card>
             <CardContent className="p-6">
               <div className="space-y-4">
-                {/* Utilisez la nouvelle variable ici */}
                 {filteredAndSortedTransactions.map((transaction) => (
                   <div
                     key={transaction.id}
-                    className="flex items-center justify-between p-4 bg-secondary rounded-lg hover:bg-muted transition-colors"
+                    className={cn(
+                      "flex items-center justify-between p-4 rounded-lg transition-colors",
+                      transaction.type === 'investment' ? 'card-gradient' : 'bg-secondary hover:bg-muted'
+                    )}
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-100 text-blue-600">
+                      <div className={cn(
+                        "w-10 h-10 rounded-full flex items-center justify-center",
+                        transaction.type === 'investment' ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-600'
+                      )}>
                         <ArrowRightLeft className="w-5 h-5" />
                       </div>
                       <div>
-                        <p className="font-semibold">{transaction.description}</p>
-                        <p className="text-sm text-muted-foreground">{transaction.date}</p>
+                        <p className={cn(
+                          "font-semibold",
+                          transaction.type === 'investment' ? 'text-white' : ''
+                        )}>{transaction.description}</p>
+                        <p className={cn(
+                          "text-sm",
+                          transaction.type === 'investment' ? 'text-white/80' : 'text-muted-foreground'
+                        )}>{transaction.date}</p>
                       </div>
                     </div>
                     <p
-                      className={`font-bold text-lg ${
-                        transaction.type === "payout" ? "text-green-600" : "text-red-600"
-                      }`}
+                      className={cn(
+                        "font-bold text-lg",
+                        transaction.type === "payout" ? "text-green-600" : (transaction.type === 'investment' ? "text-white" : "text-red-600")
+                      )}
                     >
                       {transaction.type === "payout" ? "+" : "-"}
                       Rp {Math.abs(transaction.amount).toLocaleString("id-ID")}

@@ -28,10 +28,8 @@ const UMKMList = () => {
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Cari UMKM</h1>
-
-          {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
@@ -52,12 +50,10 @@ const UMKMList = () => {
               </SelectContent>
             </Select>
           </div>
-
-          {/* UMKM Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredUMKM.map((umkm) => (
-              <Card key={umkm.id} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 space-y-4">
+              <Card key={umkm.id} className="hover:shadow-lg transition-shadow flex flex-col">
+                <CardContent className="p-6 space-y-4 flex flex-col flex-grow">
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="font-bold text-lg mb-1">{umkm.name}</h3>
@@ -68,12 +64,12 @@ const UMKMList = () => {
                       <span className="text-sm font-semibold text-primary">{umkm.creditScore}</span>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">{umkm.description}</p>
+                  <p className="text-sm text-muted-foreground flex-grow">{umkm.description}</p>
                   <div className="pt-2 border-t border-border">
                     <p className="text-sm text-muted-foreground mb-1">Modal Dibutuhkan</p>
                     <p className="font-bold text-lg">{umkm.modalDibutuhkan}</p>
                   </div>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full mt-auto" variant="transparent-gradient">
                     <Link to={`/dashboard-investor/umkm/${umkm.id}`}>Lihat Detail</Link>
                   </Button>
                 </CardContent>
