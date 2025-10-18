@@ -36,7 +36,6 @@ const RegisterUMKM = () => {
     kecamatan: "",
     desa: "",
     jumlahKaryawan: "",
-    // Step 3 fields are now part of Step 2
     nmid: "",
     nr: "",
     nib: "",
@@ -66,7 +65,14 @@ const RegisterUMKM = () => {
     <div className="min-h-screen bg-secondary py-12 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-8">
-          <img src={logo} alt="TemanUsaha" className="w-16 h-16 mx-auto mb-4" />
+          <div className="relative w-full">
+            <img
+              src={logo}
+              alt="TemanUsaha"
+              className="block mx-auto w-48 h-auto md:w-56 drop-shadow-md transition-transform duration-300 hover:scale-105"
+              style={{ position: "relative", left: "30px" }}
+            />
+          </div>
           <h1 className="text-3xl font-bold">Daftar sebagai UMKM</h1>
         </div>
 

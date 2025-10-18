@@ -44,8 +44,13 @@ const LoginUMKM = () => {
     <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-4 text-center">
-          <div className="flex justify-center">
-            <img src={logo} alt="TemanUsaha" className="w-20 h-20" />
+          <div className="relative w-full">
+            <img
+              src={logo}
+              alt="TemanUsaha"
+              className="block mx-auto w-48 h-auto md:w-56 drop-shadow-md transition-transform duration-300 hover:scale-105"
+              style={{ position: "relative", left: "30px" }}
+            />
           </div>
           <CardTitle className="text-2xl font-bold">Login UMKM</CardTitle>
           <CardDescription>Masuk ke akun UMKM Anda</CardDescription>
