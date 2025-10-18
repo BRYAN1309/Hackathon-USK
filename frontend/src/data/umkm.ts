@@ -1,7 +1,7 @@
 export const umkmData = [
   {
     id: 1,
-    name: "Warung Sederhana",
+    name: "Warung Makan Sederhana",
     creditScore: 89,
     description: "Warung makan tradisional dengan menu nusantara",
     modalDibutuhkan: "Rp 20.000.000",
@@ -43,7 +43,7 @@ export const monthlyData = [
   ];
 
   export const expenseCategories = [
-    { name: "Bahan Baku", value: 45 },
+    { name: "Keuntungan", value: 45 },
     { name: "Gaji", value: 30 },
     { name: "Operasional", value: 15 },
     { name: "Lainnya", value: 10 },
@@ -59,7 +59,7 @@ export const monthlyData = [
   ];
 
   export const topUMKM = [
-    { name: "Warung Sederhana", creditScore: 89, profit: "+15%" },
+    { name: "Warung Makan Sederhana", creditScore: 89, profit: "+15%" },
     { name: "Cafe Nusantara", creditScore: 25, profit: "+12%" },
     { name: "Resto Tradisional", creditScore: 58, profit: "+8%" },
   ];
@@ -92,7 +92,7 @@ export const monthlyData = [
   ];
 
   export const umkmDetail = {
-    name: "Warung Sederhana",
+    name: "Warung Makan Sederhana",
     creditScore: 78,
     location: "Papua",
     category: "Makanan",

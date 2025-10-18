@@ -5,12 +5,10 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp } from "lucide-react";
-
-// Data dummy untuk permintaan dari UMKM
 const umkmRequests = [
   {
     id: 1,
-    name: "Warung Sederhana",
+    name: "Warung Makan Sederhana",
     creditScore: 89,
     description: "Warung makan tradisional dengan menu nusantara yang membutuhkan dana untuk ekspansi cabang.",
     modalDibutuhkan: "Rp 20.000.000",
@@ -32,13 +30,12 @@ const InvestorRequests = () => {
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Permintaan Pendanaan</h1>
           <p className="text-muted-foreground">
             Berikut adalah daftar UMKM yang telah mengajukan permintaan pendanaan kepada Anda.
           </p>
 
-          {/* Daftar Permintaan UMKM */}
           {umkmRequests.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {umkmRequests.map((umkm) => (

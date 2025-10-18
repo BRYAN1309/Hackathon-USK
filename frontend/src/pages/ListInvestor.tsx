@@ -92,9 +92,9 @@ const ListInvestor = () => {
       <DashboardSidebar type="umkm" />
       
       <div className="flex-1">
-        <DashboardHeader userName="Warung Bu Sari" />
+        <DashboardHeader userName="Warung Makan Sederhana" />
         
-        <main className="p-6">
+        <main className="p-6 animate-fade-in-up">
           <div className="mb-6">
             <h2 className="text-2xl font-bold mb-2">Cari Investor untuk Didanai</h2>
             <p className="text-muted-foreground">Temukan investor yang sesuai dengan kebutuhan bisnis Anda</p>

@@ -7,12 +7,22 @@ import { monthlyData, expenseCategories } from "@/data/umkm";
 const AnalisisUMKM = () => {
   const COLORS = ["hsl(var(--primary))", "hsl(var(--accent))", "#10b981", "#f59e0b"];
 
+  const formatYAxis = (tickItem: number) => {
+    if (tickItem >= 1000000) {
+      return `${tickItem / 1000000}jt`; 
+    }
+    return tickItem.toLocaleString("id-ID");
+  };
+  const tooltipFormatter = (value: number) => {
+    return `Rp ${value.toLocaleString("id-ID")}`;
+  };
+
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="umkm" />
       <div className="flex-1">
         <DashboardHeader userName="Warung Makan Sederhana" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Analisis Keuangan</h1>
 
           {/* Revenue vs Expense */}
@@ -25,8 +35,8 @@ const AnalisisUMKM = () => {
                 <BarChart data={monthlyData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
+                  <YAxis tickFormatter={formatYAxis} />
+                  <Tooltip formatter={tooltipFormatter} /> {/* Apply the tooltip formatter */}
                   <Bar dataKey="pendapatan" fill="hsl(var(--primary))" name="Pendapatan" />
                   <Bar dataKey="pengeluaran" fill="hsl(var(--destructive))" name="Pengeluaran" />
                 </BarChart>
@@ -35,7 +45,6 @@ const AnalisisUMKM = () => {
           </Card>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Profit Chart */}
             <Card>
               <CardHeader>
                 <CardTitle>Profit Bulanan</CardTitle>
@@ -45,18 +54,16 @@ const AnalisisUMKM = () => {
                   <BarChart data={monthlyData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
+                    <YAxis tickFormatter={formatYAxis} />
+                    <Tooltip formatter={tooltipFormatter} />
                     <Bar dataKey="profit" fill="#10b981" name="Profit" />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
-
-            {/* Expense Distribution */}
             <Card>
               <CardHeader>
-                <CardTitle>Distribusi Pengeluaran</CardTitle>
+                <CardTitle>Distribusi data</CardTitle>
               </CardHeader>
               <CardContent className="flex items-center justify-center">
                 <ResponsiveContainer width="100%" height={250}>
@@ -75,7 +82,7 @@ const AnalisisUMKM = () => {
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>
-                    <Tooltip />
+                    <Tooltip formatter={tooltipFormatter} />
                   </PieChart>
                 </ResponsiveContainer>
               </CardContent>

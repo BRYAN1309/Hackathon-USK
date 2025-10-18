@@ -1,4 +1,3 @@
-// src/pages/UMKMProfile.tsx
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,11 +21,10 @@ const UMKMProfile = () => {
       <DashboardSidebar type="umkm" />
       <div className="flex-1">
         <DashboardHeader userName={umkmDetail.name} />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Profil Usaha</h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Kolom Kiri - Info Usaha & Gamifikasi */}
             <div className="lg:col-span-2 space-y-6">
               <Card>
                 <CardHeader>
@@ -64,8 +62,6 @@ const UMKMProfile = () => {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Kolom Kanan - Gamifikasi */}
             <div className="space-y-6">
               <Card>
                 <CardHeader>

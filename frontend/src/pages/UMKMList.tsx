@@ -28,10 +28,8 @@ const UMKMList = () => {
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Cari UMKM</h1>
-
-          {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
@@ -52,8 +50,6 @@ const UMKMList = () => {
               </SelectContent>
             </Select>
           </div>
-
-          {/* UMKM Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredUMKM.map((umkm) => (
               <Card key={umkm.id} className="hover:shadow-lg transition-shadow">

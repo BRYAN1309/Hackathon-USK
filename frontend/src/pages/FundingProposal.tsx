@@ -5,8 +5,7 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input"; // Import Input
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useNavigate, useParams } from "react-router-dom";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -15,7 +14,7 @@ const FundingProposal = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(false);
-  const [isProposalDialogOpen, setIsProposalDialogOpen] = useState(false); // State for proposal form dialog
+  const [isProposalDialogOpen, setIsProposalDialogOpen] = useState(false);
   const [fundingAmount, setFundingAmount] = useState("");
   const [equityOffer, setEquityOffer] = useState("");
 
@@ -24,12 +23,11 @@ const FundingProposal = () => {
   };
 
   const handleProposalSubmit = () => {
-    // Logic to handle the submission
     console.log("Funding Amount:", fundingAmount);
     console.log("Equity Offer:", equityOffer);
 
-    setIsProposalDialogOpen(false); // Close the proposal dialog
-    setShowSuccess(true); // Show the success dialog
+    setIsProposalDialogOpen(false); 
+    setShowSuccess(true); 
   };
 
 
@@ -43,9 +41,9 @@ const FundingProposal = () => {
       <DashboardSidebar type="umkm" />
       
       <div className="flex-1">
-        <DashboardHeader userName="Warung Bu Sari" />
+        <DashboardHeader userName="Warung Makan Sederhana" />
         
-        <main className="p-6 max-w-5xl mx-auto">
+        <main className="p-6 max-w-5xl mx-auto animate-fade-in-up">
           <Button 
             variant="ghost" 
             onClick={() => navigate("/cari-investor")}
@@ -56,7 +54,6 @@ const FundingProposal = () => {
           </Button>
 
           <div className="space-y-6">
-            {/* Equity Ownership Section */}
             <Card className="border-border">
               <CardHeader>
                 <CardTitle className="text-2xl">Apa itu Kepemilikan Saham (Equity)?</CardTitle>
@@ -106,8 +103,6 @@ const FundingProposal = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* ROI Section */}
             <Card className="border-border">
               <CardHeader>
                 <CardTitle className="text-2xl">Apa itu Return of Investment (ROI)?</CardTitle>
@@ -147,7 +142,6 @@ const FundingProposal = () => {
                 </div>
 
                 <Separator />
-
                 <div className="bg-secondary/50 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2">Contoh Perhitungan ROI</h4>
                   <div className="text-sm text-muted-foreground space-y-2">
@@ -168,8 +162,6 @@ const FundingProposal = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Terms & Conditions */}
             <Card className="border-border">
               <CardHeader>
                 <CardTitle className="text-2xl">Syarat & Ketentuan</CardTitle>
@@ -215,8 +207,6 @@ const FundingProposal = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Submit Button */}
             <div className="flex justify-end gap-4 pt-4">
               <Button variant="outline" onClick={() => navigate("/cari-investor")}>
                 Batalkan
@@ -228,8 +218,6 @@ const FundingProposal = () => {
           </div>
         </main>
       </div>
-
-      {/* Funding Proposal Dialog */}
       <Dialog open={isProposalDialogOpen} onOpenChange={setIsProposalDialogOpen}>
         <DialogContent>
           <DialogHeader>
@@ -266,9 +254,6 @@ const FundingProposal = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
-
-      {/* Success Dialog */}
       <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
         <DialogContent className="max-w-md">
           <DialogHeader>

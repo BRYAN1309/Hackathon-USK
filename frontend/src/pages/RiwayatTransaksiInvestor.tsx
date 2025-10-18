@@ -7,10 +7,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, ArrowRightLeft } from "lucide-react";
 
 const investorTransactions = [
-    { id: 1, date: "2024-06-10", description: "Investasi di Warung Sederhana", amount: -20000000, type: "investment" },
+    { id: 1, date: "2024-06-10", description: "Investasi di Warung Makan Sederhana", amount: -20000000, type: "investment" },
     { id: 2, date: "2024-06-05", description: "Payout dari Cafe Nusantara", amount: 1500000, type: "payout" },
     { id: 3, date: "2024-05-20", description: "Investasi di Resto Tradisional", amount: -15000000, type: "investment" },
-    { id: 4, date: "2024-05-10", description: "Payout dari Warung Sederhana", amount: 1200000, type: "payout" },
+    { id: 4, date: "2024-05-10", description: "Payout dari Warung Makan Sederhana", amount: 1200000, type: "payout" },
     { id: 5, date: "2024-04-15", description: "Investasi di Kedai Kopi Asli", amount: -10000000, type: "investment" },
 ];
 
@@ -18,8 +18,6 @@ const investorTransactions = [
 const RiwayatTransaksiInvestor = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("date");
-
-  // START: Logique de filtrage et de tri
   const filteredAndSortedTransactions = investorTransactions
     .filter((transaction) =>
       transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -35,17 +33,13 @@ const RiwayatTransaksiInvestor = () => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
       }
     });
-  // END: Logique de filtrage et de tri
-
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="investor" />
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <h1 className="text-3xl font-bold">Riwayat Transaksi Investor</h1>
-
-          {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />

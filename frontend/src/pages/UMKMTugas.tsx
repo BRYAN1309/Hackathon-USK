@@ -1,4 +1,3 @@
-// src/pages/UMKMTugas.tsx
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -12,7 +11,7 @@ const UMKMTugas = () => {
       <DashboardSidebar type="umkm" />
       <div className="flex-1">
         <DashboardHeader userName="Warung Makan Sederhana" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in-up">
           <div className="flex items-start justify-between">
             <div>
               <h1 className="text-3xl font-bold">Tugas & Tantangan</h1>
