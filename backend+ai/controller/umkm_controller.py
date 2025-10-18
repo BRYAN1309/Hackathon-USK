@@ -5,9 +5,7 @@ from model.user_umkm_model import UserModel
 from view.response_view import success_response, error_response
 import uuid
 
-@jwt_required()
 def register_umkm():
-    user_id = get_jwt_identity()  # ini akan jadi integer setelah login diperbaiki
     data = request.form
     file = request.files.get("foto_bisnis")
 
@@ -20,9 +18,10 @@ def register_umkm():
     nomor_rekening = data.get("nomor_rekening")
     nmid = data.get("nmid")
     surat_izin_usaha = data.get("surat_izin_usaha")
+    user_id = data.get("user_id")  # <- ambil dari frontend, bukan JWT
 
-    if not all([nama_bisnis, lokasi]):
-        return error_response("Field nama_bisnis dan lokasi wajib diisi")
+    if not all([nama_bisnis, lokasi, user_id]):
+        return error_response("Field nama_bisnis, lokasi, dan user_id wajib diisi")
 
     foto_url = None
     if file:
@@ -31,7 +30,7 @@ def register_umkm():
 
     umkm_data = {
         "nama_bisnis": nama_bisnis,
-        "user_umkm_id": user_id,
+        "user_umkm_id": int(user_id),
         "foto_bisnis": foto_url,
         "kategori_bisnis": kategori_bisnis,
         "usia_bisnis": int(usia_bisnis) if usia_bisnis else None,
