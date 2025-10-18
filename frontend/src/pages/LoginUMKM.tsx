@@ -55,7 +55,7 @@ const LoginUMKM = () => {
       style={{ backgroundImage: `url(${umkmBg})` }}
     >
       <div className="absolute inset-0 bg-black/60 z-0" />
-      <Card className="w-full max-w-md shadow-lg z-10">
+      <Card className="w-full max-w-md shadow-lg z-10 animate-fade-in-up">
         <CardHeader className="space-y-4 text-center">
           <div className="relative w-full">
             <img

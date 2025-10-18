@@ -1,10 +1,32 @@
 import { stepsUMKM, stepsInvestor } from "@/data/howItWorks";
+import { useEffect, useRef, useState } from "react";
 
 export const HowItWorksSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-20 px-4 bg-secondary">
+    <section ref={sectionRef} className="py-20 px-4 bg-secondary">
       <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className={`text-center mb-16 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl font-bold mb-4 font-display">
             <span className="text-primary">Bagaimana Cara</span> Kerjanya?
           </h2>
@@ -15,7 +37,7 @@ export const HowItWorksSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Kotak Alur UMKM */}
-          <div className="bg-background rounded-2xl p-8 lg:p-10 shadow-lg animate-fade-in" style={{ animationDelay: "200ms" }}>
+          <div className={`bg-background rounded-2xl p-8 lg:p-10 shadow-lg transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: "200ms" }}>
             <h3 className="text-2xl font-bold mb-10 text-primary text-center font-display">
               Untuk UMKM
             </h3>
@@ -48,7 +70,7 @@ export const HowItWorksSection = () => {
           </div>
 
           {/* Kotak Alur Investor */}
-          <div className="bg-background rounded-2xl p-8 lg:p-10 shadow-lg animate-fade-in" style={{ animationDelay: "400ms" }}>
+          <div className={`bg-background rounded-2xl p-8 lg:p-10 shadow-lg transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: "400ms" }}>
             <h3 className="text-2xl font-bold mb-10 text-primary text-center font-display">
               Untuk Investor
             </h3>

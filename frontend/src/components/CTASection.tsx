@@ -2,10 +2,33 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import ctaBgImage from "@/assets/investorPit.jpg";
+import { useEffect, useRef, useState } from "react";
 
 export const CTASection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+
   return (
-    <section className="relative py-20 px-4">
+    <section ref={sectionRef} className="relative py-20 px-4">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -18,7 +41,7 @@ export const CTASection = () => {
 
       {/* Content */}
       <div className="container mx-auto relative z-10">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
+        <div className={`max-w-4xl mx-auto text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white font-display">
             <span className="text-primary">Siap Memulai</span> Perjalanan Anda?
           </h2>

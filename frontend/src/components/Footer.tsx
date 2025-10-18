@@ -1,10 +1,32 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export const Footer = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="bg-background border-t border-border">
+    <footer ref={sectionRef} className={`bg-background border-t border-border transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className="container mx-auto px-4 py-12">
         {/* Main content area with Flexbox */}
         <div className="flex flex-col lg:flex-row justify-between gap-12 mb-8">
