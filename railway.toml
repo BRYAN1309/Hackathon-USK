@@ -1,14 +1,38 @@
-[build]
-builder = "nixpacks"
-buildCommand = "pip install -r requirements.txt"
+# ===========================
+# 🚀 Railway Deployment Config
+# Optimized for Python + Gunicorn + Nixpacks
+# ===========================
 
-[deploy]
-noBuildCache = true
+[build]
+# Use Nixpacks builder (recommended for Python apps)
+builder = "nixpacks"
+
+# Install dependencies without pip cache (reduces image size)
+buildCommand = "pip install --no-cache-dir -r requirements.txt"
+
+# Disable build caching to avoid large cached layers
 buildCacheEnabled = false
 
+
+[deploy]
+# Ensures clean builds every time (optional, keeps image smaller)
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+
 [service]
+# Build directly from source
 buildStrategy = "source"
+
+# Start Gunicorn with one worker & multiple threads
 startCommand = "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0"
 
+# Optional: Set Python environment variables
+[service.env]
+PYTHONUNBUFFERED = "1"
+PYTHONDONTWRITEBYTECODE = "1"
+
+
 [service.ports]
+# Expose HTTP on port 8000
 http = "8000"
