@@ -8,7 +8,6 @@ import uuid
 def register_umkm():
     data = request.form
     file = request.files.get("foto_bisnis")
-
     nama_bisnis = data.get("nama_bisnis")
     kategori_bisnis = data.get("kategori_bisnis", "fnb")
     usia_bisnis = data.get("usia_bisnis")
