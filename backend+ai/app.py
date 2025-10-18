@@ -9,12 +9,12 @@ import joblib
 import numpy as np
 import xgboost as xgb
 import pickle
-
+from view.response_view import error_response,success_response
 # Load environment variables
 load_dotenv()
 
 # Controllers
-from controller import user_umkm_controller, umkm_controller, investor_controller
+from controller import user_umkm_controller, umkm_controller, investor_controller,transaksi_controller, data_bulanan_controller,kyc_controller
 
 # Generate configuration
 config = generate_config()
@@ -235,6 +235,28 @@ def register_investor():
 @app.route("/investor/login", methods=["POST"], endpoint="login_investor")
 def login_investor():
     return investor_controller.login_investor()
+
+@app.route("/transaksi/<int:nomor_rekening>", methods=["GET"], endpoint="transaction_api")
+def get_transaksi_by_user_id(nomor_rekening):
+    data, message = transaksi_controller.TransaksiController.get_transaksi_by_nomor_rekening(nomor_rekening)
+    if data is None:
+        return error_response(message)
+    return success_response(message, data)
+
+@app.route("/data-bulanan/<int:nomor_rekening>", methods=["GET"], endpoint="data_bulanan_by_rekening_api")
+def get_data_bulanan_by_nomor_rekening(nomor_rekening):
+    data, message = data_bulanan_controller.DataBulananController.get_data_bulanan_by_nomor_rekening(nomor_rekening)
+    if data is None:
+        return error_response(message)
+    return success_response(message, data)
+
+
+@app.route("/kyc/<int:nik>", methods=["GET"], endpoint="kyc_by_nik_api")
+def get_kyc_by_nik(nik):
+    data, message = kyc_controller.KYCController.get_kyc_by_nik(nik)
+    if data is None:
+        return error_response(message)
+    return success_response(message, data)
 
 # =========================================================
 # 🔹 Health Check Routes
