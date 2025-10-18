@@ -21,6 +21,7 @@ const DashboardInvestor = () => {
               icon={Wallet}
               trend="+20% dari bulan lalu"
               trendUp={true}
+              isGradient
             />
             <StatCard
               title="ROI"
@@ -28,6 +29,7 @@ const DashboardInvestor = () => {
               icon={TrendingUp}
               trend="+2.3% dari bulan lalu"
               trendUp={true}
+              isGradient
             />
             <StatCard
               title="Total Revenue Portfolio"
@@ -35,6 +37,7 @@ const DashboardInvestor = () => {
               icon={DollarSign}
               trend="+15% dari bulan lalu"
               trendUp={true}
+              isGradient
             />
           </div>
           <Card>

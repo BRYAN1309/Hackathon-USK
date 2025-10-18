@@ -5,6 +5,7 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp } from "lucide-react";
+
 const umkmRequests = [
   {
     id: 1,
@@ -58,7 +59,7 @@ const InvestorRequests = () => {
                     </div>
                   </CardContent>
                   <div className="p-6 pt-0">
-                    <Button asChild className="w-full">
+                    <Button asChild className="w-full" variant="transparent-gradient">
                       <Link to={`/dashboard-investor/umkm/${umkm.id}`}>Lihat Detail & Investasi</Link>
                     </Button>
                   </div>

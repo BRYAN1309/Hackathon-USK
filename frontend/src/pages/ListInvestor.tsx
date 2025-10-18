@@ -115,7 +115,7 @@ const ListInvestor = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredInvestors.map((investor) => (
-              <Card key={investor.id} className="border-border hover:shadow-elegant transition-smooth">
+              <Card key={investor.id} className="border-border hover:shadow-elegant transition-smooth flex flex-col">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div>
@@ -128,7 +128,7 @@ const ListInvestor = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Portfolio:</span>
@@ -136,7 +136,7 @@ const ListInvestor = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Avg ROI:</span>
-                      <span className="font-medium text-chart-4">{investor.avgROI}</span>
+                      <span className="font-medium text-green-600">{investor.avgROI}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Fokus:</span>
@@ -152,6 +152,7 @@ const ListInvestor = () => {
                   <Button 
                     onClick={() => setSelectedInvestor(investor)}
                     className="w-full"
+                    variant="transparent-gradient"
                   >
                     Lihat Detail
                   </Button>
@@ -192,7 +193,7 @@ const ListInvestor = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Rata-rata ROI</p>
-                <p className="text-lg font-semibold text-chart-4">{selectedInvestor?.avgROI}</p>
+                <p className="text-lg font-semibold text-green-600">{selectedInvestor?.avgROI}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Fokus Industri</p>

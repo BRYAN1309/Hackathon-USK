@@ -66,10 +66,10 @@ const UMKMDetail = () => {
 
           <Tabs defaultValue="description" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="description" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Deskripsi</TabsTrigger>
-              <TabsTrigger value="financial" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Keuangan</TabsTrigger>
-              <TabsTrigger value="documents" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Dokumen</TabsTrigger>
-              <TabsTrigger value="invest" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Investasi</TabsTrigger>
+              <TabsTrigger value="description" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Deskripsi</TabsTrigger>
+              <TabsTrigger value="financial" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Keuangan</TabsTrigger>
+              <TabsTrigger value="documents" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Dokumen</TabsTrigger>
+              <TabsTrigger value="invest" className="data-[state=active]:card-gradient data-[state=active]:text-primary-foreground">Investasi</TabsTrigger>
             </TabsList>
             <TabsContent value="description" className="space-y-6 mt-6">
               <Card>

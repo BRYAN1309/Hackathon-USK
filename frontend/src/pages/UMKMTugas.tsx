@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Award } from "lucide-react";
 import { umkmTasks, userGamification } from "@/data/gamification";
+import { cn } from "@/lib/utils";
 
 const UMKMTugas = () => {
   return (
@@ -37,14 +38,29 @@ const UMKMTugas = () => {
               {umkmTasks.map(task => {
                 const Icon = task.icon;
                 return (
-                  <div key={task.id} className={`border rounded-lg p-4 flex items-center justify-between transition-colors ${task.isCompleted ? 'bg-green-50 border-green-200' : 'hover:bg-muted'}`}>
+                  <div key={task.id} className={cn(
+                    'border rounded-lg p-4 flex items-center justify-between transition-colors',
+                    task.isCompleted ? 'bg-green-50 border-green-200' : 'hover:bg-muted card-gradient'
+                  )}>
                     <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${task.isCompleted ? 'bg-green-100' : 'bg-primary/10'}`}>
-                        <Icon className={`w-6 h-6 ${task.isCompleted ? 'text-green-600' : 'text-primary'}`} />
+                      <div className={cn(
+                        'w-12 h-12 rounded-lg flex items-center justify-center',
+                        task.isCompleted ? 'bg-green-100' : 'bg-white/20'
+                      )}>
+                        <Icon className={cn(
+                          'w-6 h-6',
+                          task.isCompleted ? 'text-green-600' : 'text-white'
+                        )} />
                       </div>
                       <div>
-                        <p className={`font-semibold ${task.isCompleted ? 'line-through text-muted-foreground' : ''}`}>{task.title}</p>
-                        <p className="text-sm text-muted-foreground">{task.description}</p>
+                        <p className={cn(
+                          'font-semibold',
+                          task.isCompleted ? 'line-through text-muted-foreground' : 'text-white'
+                        )}>{task.title}</p>
+                        <p className={cn(
+                          'text-sm',
+                          task.isCompleted ? 'text-muted-foreground' : 'text-white/80'
+                        )}>{task.description}</p>
                       </div>
                     </div>
                     <div className="text-right">
@@ -55,8 +71,8 @@ const UMKMTugas = () => {
                         </div>
                       ) : (
                         <>
-                           <p className="font-bold text-lg text-primary">+{task.points} Poin</p>
-                           <Button size="sm" className="mt-1">Kerjakan</Button>
+                           <p className="font-bold text-lg text-white">+{task.points} Poin</p>
+                           <Button size="sm" className="mt-1" variant="gradient-outline">Kerjakan</Button>
                         </>
                       )}
                     </div>

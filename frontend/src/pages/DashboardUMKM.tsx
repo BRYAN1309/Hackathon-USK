@@ -45,6 +45,7 @@ const DashboardUMKM = () => {
                   icon={TrendingUp}
                   trend="+12% dari bulan lalu"
                   trendUp={true}
+                  isGradient
                 />
                 <StatCard
                   title="Total Pengeluaran"
@@ -52,6 +53,7 @@ const DashboardUMKM = () => {
                   icon={TrendingDown}
                   trend="-5% dari bulan lalu"
                   trendUp={false}
+                  isGradient
                 />
                 <StatCard
                   title="Net Profit"
@@ -59,12 +61,14 @@ const DashboardUMKM = () => {
                   icon={DollarSign}
                   trend="+8% dari bulan lalu"
                   trendUp={true}
+                  isGradient
                 />
                 <StatCard
                   title="Investor Aktif"
                   value="3 Investor"
                   icon={User}
                   trend="Tingkat retensi 60%"
+                  isGradient
                 />
               </div>
               <Card>
@@ -106,7 +110,7 @@ const DashboardUMKM = () => {
                   <p className="text-xs text-muted-foreground text-center mb-4">
                     500 poin lagi untuk mencapai level Emas!
                   </p>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full" variant="transparent-gradient">
                     <Link to="/dashboard-umkm/tugas">Lihat Semua Misi</Link>
                   </Button>
                 </CardContent>
