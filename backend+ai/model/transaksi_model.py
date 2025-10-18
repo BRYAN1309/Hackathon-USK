@@ -7,13 +7,19 @@ supabase: Client = create_client(config.supabase_url, config.supabase_key)
 
 class TransaksiModel:
     @staticmethod
-    def get_by_user_id(user_id: int):
+    def get_by_nomor_rekening(nomor_rekening: int):
         """
-        Ambil semua data transaksi berdasarkan user_id
+        Ambil semua data transaksi berdasarkan nomor_rekening
         """
         try:
-            response = supabase.table("Data Transaksi").select("*").eq("user_id", user_id).execute()
+            response = (
+                supabase
+                .table("Data Transaksi")
+                .select("*")
+                .eq("nomor_rekening", nomor_rekening)
+                .execute()
+            )
             return response.data
         except Exception as e:
-            print("Error saat mengambil data:", e)
+            print("Error saat mengambil data transaksi:", e)
             return None

@@ -7,12 +7,18 @@ supabase: Client = create_client(config.supabase_url, config.supabase_key)
 
 class DataBulananModel:
     @staticmethod
-    def get_by_user_id(user_id: int):
+    def get_by_nomor_rekening(nomor_rekening: int):
         """
-        Ambil semua data bulanan berdasarkan user_id
+        Ambil semua data bulanan berdasarkan nomor_rekening
         """
         try:
-            response = supabase.table("data_bulanan").select("*").eq("user_id", user_id).execute()
+            response = (
+                supabase
+                .table("data_bulanan")
+                .select("*")
+                .eq("nomor_rekening", nomor_rekening)
+                .execute()
+            )
             return response.data
         except Exception as e:
             print("Error saat mengambil data bulanan:", e)

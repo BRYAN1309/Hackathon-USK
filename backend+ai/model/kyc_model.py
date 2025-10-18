@@ -7,12 +7,18 @@ supabase: Client = create_client(config.supabase_url, config.supabase_key)
 
 class KYCModel:
     @staticmethod
-    def get_by_user_id(user_id: int):
+    def get_by_nik(nik: int):
         """
-        Ambil data KYC berdasarkan user_id
+        Ambil data KYC berdasarkan NIK
         """
         try:
-            response = supabase.table("KYC").select("*").eq("user_id", user_id).execute()
+            response = (
+                supabase
+                .table("KYC")
+                .select("*")
+                .eq("NIK", nik)
+                .execute()
+            )
             return response.data
         except Exception as e:
             print("Error saat mengambil data KYC:", e)
