@@ -11,38 +11,51 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import logo from "@/assets/logo.svg";
-import { loginUser } from "@/api/auth"; 
+import { loginUser } from "@/api/auth";
+import { useToast } from "@/hooks/use-toast";
+import umkmBg from "@/assets/umkm-3.jpg";
 
 const LoginUMKM = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMsg(null);
 
     try {
       const res = await loginUser(email, password);
-      // Simpan token ke localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      alert("Login berhasil!");
+      toast({
+        title: "Login berhasil!",
+        description: "Anda akan diarahkan ke dashboard UMKM.",
+      });
       navigate("/dashboard-umkm");
     } catch (error: any) {
-      setErrorMsg(error.response?.data?.message || "Login gagal, periksa email & password Anda.");
+      toast({
+        variant: "destructive",
+        title: "Login Gagal",
+        description:
+          error.response?.data?.message ||
+          "Periksa kembali email & password Anda.",
+      });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg">
+    <div
+      className="relative min-h-screen w-full flex items-center justify-center p-4 bg-cover bg-center"
+      style={{ backgroundImage: `url(${umkmBg})` }}
+    >
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <Card className="w-full max-w-md shadow-lg z-10">
         <CardHeader className="space-y-4 text-center">
           <div className="relative w-full">
             <img
@@ -68,7 +81,6 @@ const LoginUMKM = () => {
                 required
               />
             </div>
-
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input
@@ -80,15 +92,14 @@ const LoginUMKM = () => {
                 required
               />
             </div>
-
-            {errorMsg && (
-              <p className="text-red-500 text-sm text-center">{errorMsg}</p>
-            )}
-
-            <Button type="submit" className="w-full" size="lg" disabled={loading}>
+            <Button
+              type="submit"
+              className="w-full"
+              size="lg"
+              disabled={loading}
+            >
               {loading ? "Memproses..." : "Masuk"}
             </Button>
-
             <p className="text-center text-sm text-muted-foreground">
               Belum punya akun?{" "}
               <Link

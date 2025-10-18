@@ -3,10 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import logo from "@/assets/logo.svg";
-import { loginInvestor } from "@/api/investor"; // 🔹 tambahkan ini
-import { toast } from "sonner"; // opsional jika pakai notifikasi
+import { loginInvestor } from "@/api/investor";
+import { toast } from "sonner";
+import investorBg from "@/assets/investorPit-2.jpg";
 
 const LoginInvestor = () => {
   const navigate = useNavigate();
@@ -20,12 +27,10 @@ const LoginInvestor = () => {
 
     try {
       const res = await loginInvestor(email, password);
-
-      // Simpan token & data user ke localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("investor", JSON.stringify(res.data.investor));
 
-      toast.success("Login berhasil!"); // opsional
+      toast.success("Login berhasil!");
       navigate("/dashboard-investor");
     } catch (err: any) {
       toast.error(err.message || "Login gagal");
@@ -35,8 +40,12 @@ const LoginInvestor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg">
+    <div
+      className="relative min-h-screen w-full flex items-center justify-center p-4 bg-cover bg-center"
+      style={{ backgroundImage: `url(${investorBg})` }}
+    >
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <Card className="w-full max-w-md shadow-lg z-10">
         <CardHeader className="space-y-4 text-center">
           <div className="relative w-full">
             <img
@@ -78,7 +87,10 @@ const LoginInvestor = () => {
             </Button>
             <p className="text-center text-sm text-muted-foreground">
               Belum punya akun?{" "}
-              <Link to="/register-investor" className="text-primary font-medium hover:underline">
+              <Link
+                to="/register-investor"
+                className="text-primary font-medium hover:underline"
+              >
                 Daftar sekarang
               </Link>
             </p>

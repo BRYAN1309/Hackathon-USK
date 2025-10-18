@@ -29,7 +29,7 @@ const UMKMList = () => {
       <div className="flex-1">
         <DashboardHeader userName="Investor Pro" />
         <main className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold">Cari UMKM !</h1>
+          <h1 className="text-3xl font-bold">Cari UMKM</h1>
 
           {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4">

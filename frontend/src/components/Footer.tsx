@@ -12,11 +12,17 @@ export const Footer = () => {
           {/* Brand Column (Left Side) */}
           <div className="space-y-4 lg:w-1/3">
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="TemanUsaha" className="w-12 h-12" />
-              <span className="text-xl font-bold">TemanUsaha</span>
+              <div className="relative w-full">
+                <img
+                  src={logo}
+                  alt="TemanUsaha"
+                  className="block mx-auto w-48 h-auto md:w-56 drop-shadow-md transition-transform duration-300 hover:scale-105"
+                  style={{ position: "relative", left: "0px" }}
+                />
+              </div>
             </Link>
             <p className="text-muted-foreground">
-              Platform AI Micro-Investment yang mempertemukan UMKM F&B wilayah 3T dengan investor.
+              AI Micro-Investment Platform yang mempertemukan UMKM dengan investor.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors">
@@ -73,8 +79,8 @@ export const Footer = () => {
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground">
                   <Phone className="w-5 h-5 flex-shrink-0" />
-                  <a href="tel:+6281234567890" className="hover:text-primary transition-colors">
-                    +62 812-3456-7890
+                  <a href="tel:6282116801709" className="hover:text-primary transition-colors">
+                    +62 821-1680-1709
                   </a>
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground">

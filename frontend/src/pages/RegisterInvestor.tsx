@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import logo from "../assets/logo.svg";
+import investorBg from "@/assets/investorPit-2.jpg";
 
 const RegisterInvestor = () => {
   const navigate = useNavigate();
@@ -38,9 +39,7 @@ const RegisterInvestor = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
@@ -68,8 +67,12 @@ const RegisterInvestor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl shadow-lg">
+    <div
+      className="relative min-h-screen w-full flex items-center justify-center p-4 bg-cover bg-center"
+      style={{ backgroundImage: `url(${investorBg})` }}
+    >
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <Card className="w-full max-w-2xl shadow-lg z-10">
         <CardHeader className="space-y-4 text-center">
           <div className="relative w-full">
             <img
@@ -88,7 +91,6 @@ const RegisterInvestor = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Informasi Personal */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold border-b pb-2">
                 Informasi Personal
@@ -121,7 +123,6 @@ const RegisterInvestor = () => {
               </div>
             </div>
 
-            {/* Detail Investasi */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold border-b pb-2">
                 Detail Investasi
