@@ -1,23 +1,14 @@
 [build]
-builder = "railpack"
-buildCommand = "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
+builder = "nixpacks"
+buildCommand = "pip install -r requirements.txt"
 
 [deploy]
 noBuildCache = true
 buildCacheEnabled = false
-disableImagePush = true
-skipImageStorage = true
 
 [service]
 buildStrategy = "source"
-useExternalBuild = false
 startCommand = "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0"
 
 [service.ports]
 http = "8000"
-
-[service.healthcheck]
-path = "/health"
-interval = 30
-timeout = 10
-startPeriod = 15
