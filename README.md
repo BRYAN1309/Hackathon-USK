@@ -9,8 +9,7 @@
 ---
 
 ## 🌐 Live Preview
-🚀 *Coming Soon* → [temanusaha.io](https://temanusaha.io)  
-📱 *Prototype UI:* [Figma Design](https://www.figma.com/file/example/TemanUsaha-Prototype)
+🚀 *Coming Soon* → https://nextpath.my.id/
 
 ---
 
