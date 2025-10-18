@@ -11,7 +11,6 @@ const RiwayatTransaksiUMKM = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("date");
 
-  // START: Logique de filtrage et de tri
   const filteredAndSortedTransactions = transactions
     .filter((transaction) =>
       transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -27,14 +26,13 @@ const RiwayatTransaksiUMKM = () => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
       }
     });
-  // END: Logique de filtrage et de tri
 
   return (
     <div className="flex min-h-screen bg-secondary">
       <DashboardSidebar type="umkm" />
       <div className="flex-1">
         <DashboardHeader userName="Warung Makan Sederhana" />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-fade-in">
           <h1 className="text-3xl font-bold">Riwayat Transaksi</h1>
 
           {/* Search and Filter */}
@@ -65,10 +63,11 @@ const RiwayatTransaksiUMKM = () => {
             <CardContent className="p-6">
               <div className="space-y-4">
                 {/* Utilisez la nouvelle variable ici */}
-                {filteredAndSortedTransactions.map((transaction) => (
+                {filteredAndSortedTransactions.map((transaction, index) => (
                   <div
                     key={transaction.id}
-                    className="flex items-center justify-between p-4 bg-secondary rounded-lg hover:bg-muted transition-colors"
+                    className="flex items-center justify-between p-4 bg-secondary rounded-lg hover:bg-muted transition-colors animate-fade-in-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="flex items-center gap-4">
                       <div
