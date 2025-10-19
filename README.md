@@ -11,6 +11,8 @@
 ## 🌐 Live Preview
 🚀 *Coming Soon* → https://nextpath.my.id/
 
+# File of AI from TemanUsaha
+https://drive.google.com/drive/folders/1tBI7_lkfIRrbgQOJmahCrGR4lgO_B2nX?usp=sharing 
 ---
 
 ## 🎯 Visi & Misi
